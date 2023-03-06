@@ -1,0 +1,115 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+>
+  <!-- <g id="phone" viewBox="0 0 301.81 301.81">
+    <path
+      d="M261.17,179.07l-82.1,82.1a87.52,87.52,0,0,1-123.77,0L21.21,227.09,81.26,167l43.05,43.05,85.78-85.78L167,81.26l60.05-60L261.17,55.3A87.52,87.52,0,0,1,261.17,179.07Z"
+      fill="none"
+      stroke-miterlimit="10"
+      stroke-width="30"
+    />
+  </g> -->
+
+  <!-- <g id="product"  viewBox="0 0 16.027 14">
+    <g id="Icon" transform="translate(0.909 -0.209)">
+      <rect id="Area" width="14" height="14" transform="translate(0 0.209)" fill="#fcfcfc" opacity="0"/>
+      <g id="Icon-2" data-name="Icon" transform="translate(0 1.292)">
+        <path id="dd335854-8475-4520-b10c-3aeac4f53757" d="M14.353,7.273v8.4H2.727v-8.4" transform="translate(-1.435 -4.043)" fill="none" stroke="#2355c4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.818"/>
+        <rect id="c8a6a1b5-879a-4831-be03-de10cdd7d001" width="14.209" height="3.229" transform="translate(0 0)" fill="none" stroke="#2355c4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.818"/>
+        <line id="_0dbe533f-4e79-48a8-aa3b-4ec18059e84e" data-name="0dbe533f-4e79-48a8-aa3b-4ec18059e84e" x2="2.583" transform="translate(5.813 5.813)" fill="none" stroke="#2355c4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.818"/>
+      </g>
+    </g>
+ </g> -->
+
+<g id="edit" viewBox="0 0 11.258 11.258">
+  <g id="Icon" transform="translate(0.5 0.5)">
+    <path id="ccd73350-2670-41e7-b0f9-e675189b6b88" d="M6.576,3.976H3.008A1.02,1.02,0,0,0,1.988,5v7.137a1.02,1.02,0,0,0,1.02,1.02h7.137a1.02,1.02,0,0,0,1.02-1.02V8.564" transform="translate(-1.988 -2.894)" fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    <path id="_101c3f3b-c9f1-4bac-b056-6e8741f847d9" data-name="101c3f3b-c9f1-4bac-b056-6e8741f847d9" d="M13.3,2.184a1.081,1.081,0,1,1,1.529,1.529L9.991,8.557l-2.039.51.51-2.039Z" transform="translate(-4.893 -1.867)" fill="none" stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+  </g>
+</g>
+
+<g id="dollar" viewBox="0 0 20 21.818">
+  <g id="Icon" transform="translate(0 0.909)">
+    <rect id="Area" width="20" height="20" fill="#fcfcfc" opacity="0"/>
+    <g id="Icon-2" data-name="Icon" transform="translate(1.29 2.499)">
+      <line id="bed23e82-35f1-41cd-9e5b-d872579c3cad" y2="20" transform="translate(8.71 -2.499)" fill="none" stroke="#1f1f1f" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.818"/>
+      <path id="bb5e9a6f-4f23-4d39-a672-994a4c7d480e" d="M15.455,4.545H8.636a3.182,3.182,0,0,0,0,6.364h4.546a3.182,3.182,0,1,1,0,6.364H5.455" transform="translate(-2.2 -3.408)" fill="none" stroke="#1f1f1f" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.818"/>
+    </g>
+  </g>
+</g>
+
+<g id="add" viewBox="0 0 22.222 22.222">
+  <g id="Icon" transform="translate(1.111 1.111)">
+    <rect id="Area" width="20" height="20" transform="translate(0 0)" fill="#fafafa" opacity="0"/>
+    <g id="Icon-2" data-name="Icon">
+      <rect id="_5582a755-b680-4497-b704-b83e7725e1b0" data-name="5582a755-b680-4497-b704-b83e7725e1b0" width="20" height="20" rx="2" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.222"/>
+      <line id="_262294bc-b4e9-40d0-a89f-4aed3ee7cac5" data-name="262294bc-b4e9-40d0-a89f-4aed3ee7cac5" y2="8.889" transform="translate(10 5.556)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.222"/>
+      <line id="_2342fb9e-ada3-4922-9e9c-178277babe9a" data-name="2342fb9e-ada3-4922-9e9c-178277babe9a" x2="8.889" transform="translate(5.556 10)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.222"/>
+    </g>
+  </g>
+</g>
+
+<g id="user" viewBox="0 0 14.395 15.945">
+  <g id="Icon" transform="translate(0.225 1)">
+    <rect id="Area" width="13.945" height="13.945" fill="#fafafa" opacity="0"/>
+    <g id="Icon-2" data-name="Icon" transform="translate(0.775)">
+      <path id="_558c1f2f-9fe8-4081-92a5-cc041c2e08d0" data-name="558c1f2f-9fe8-4081-92a5-cc041c2e08d0" d="M16.4,19.648V18.1A3.1,3.1,0,0,0,13.3,15H7.1A3.1,3.1,0,0,0,4,18.1v1.549" transform="translate(-4 -5.703)" fill="none" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <circle id="_2f776524-a7e0-4df8-85f5-1557f19d8fca" data-name="2f776524-a7e0-4df8-85f5-1557f19d8fca" cx="3.099" cy="3.099" r="3.099" transform="translate(3.099)" fill="none" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    </g>
+  </g>
+</g>
+
+<g id="productBox" viewBox="0 0 20.653 22.024">
+  <g id="Icon" transform="translate(0.326 1.027)">
+    <rect id="Area" width="20" height="20" transform="translate(0 0)" fill="#fafafa" opacity="0"/>
+    <g id="Icon-2" data-name="Icon" transform="translate(1.035)">
+      <path id="ee77c7ce-b62d-40fc-bde2-a9e813871aae" d="M20.919,15.938V7.969a1.992,1.992,0,0,0-1-1.723L12.95,2.261a1.993,1.993,0,0,0-1.993,0L3.984,6.246a1.993,1.993,0,0,0-1,1.723v7.969a1.993,1.993,0,0,0,1,1.723l6.973,3.985a1.993,1.993,0,0,0,1.993,0l6.972-3.985A1.992,1.992,0,0,0,20.919,15.938Z" transform="translate(-2.988 -1.994)" fill="none" stroke="#1f1f1f" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.992"/>
+      <path id="bcbca725-fa1f-457d-88c9-88730c94138b" d="M7.471,4.194l4.482,2.59,4.483-2.59" transform="translate(-2.988 -1.994)" fill="none" stroke="#1f1f1f" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.992"/>
+      <path id="eb8111dd-570b-4c63-b9e4-8eefaaa2ae1b" d="M7.471,19.713v-5.17l-4.483-2.59" transform="translate(-2.988 -1.994)" fill="none" stroke="#1f1f1f" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.992"/>
+      <path id="_8965cfca-9fd3-499d-8c09-4c59e48bf8ec" data-name="8965cfca-9fd3-499d-8c09-4c59e48bf8ec" d="M20.919,11.953l-4.483,2.59v5.17" transform="translate(-2.988 -1.994)" fill="none" stroke="#1f1f1f" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.992"/>
+      <path id="_451ce894-745e-492c-92cc-be3d3dab36dd" data-name="451ce894-745e-492c-92cc-be3d3dab36dd" d="M3.257,6.933l8.7,5.03,8.7-5.03" transform="translate(-2.988 -1.994)" fill="none" stroke="#1f1f1f" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.992"/>
+      <line id="_363c6a26-221e-475c-a152-268392e96c87" data-name="363c6a26-221e-475c-a152-268392e96c87" y1="10.041" transform="translate(8.965 9.959)" fill="none" stroke="#1f1f1f" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.992"/>
+    </g>
+  </g>
+</g>
+
+<g id="refresh" viewBox="0 0 18.547 16">
+  <g id="Icon" transform="translate(1.285 0.012)">
+    <rect id="Area" width="16" height="16" transform="translate(-0.012 -0.012)" fill="#fcfcfc" opacity="0"/>
+    <g id="Icon-2" data-name="Icon" transform="translate(0 1.454)">
+      <path id="_6bd32cbe-2249-4aa7-bfac-7015ffbce515" data-name="6bd32cbe-2249-4aa7-bfac-7015ffbce515" d="M19.812,3.636V7.994H15.455" transform="translate(-3.835 -2.912)" fill="none" stroke="#d3d3d3" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.818"/>
+      <path id="_5e356f8c-18dd-408e-8c43-8558f6029fa0" data-name="5e356f8c-18dd-408e-8c43-8558f6029fa0" d="M.909,17.085V12.727H5.267" transform="translate(-0.909 -4.74)" fill="none" stroke="#d3d3d3" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.818"/>
+      <path id="_33942191-5c8b-45e4-b8eb-3023935b36dc" data-name="33942191-5c8b-45e4-b8eb-3023935b36dc" d="M2.732,7.085a6.536,6.536,0,0,1,10.784-2.44l3.369,3.167M.909,10.716l3.369,3.167a6.536,6.536,0,0,0,10.784-2.44" transform="translate(-0.909 -2.729)" fill="none" stroke="#d3d3d3" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.818"/>
+    </g>
+  </g>
+</g>
+
+<g id="wallet" viewBox="0 0 19.149 18">
+  <g id="Icon" transform="translate(0.682)">
+    <rect id="Area" width="18" height="18" transform="translate(0.137)" fill="#fafafa" opacity="0"/>
+    <g id="Icon-2" data-name="Icon" transform="translate(0 2.282)">
+      <rect id="dd807650-3d3f-422b-8617-90859579cb9d" width="17.786" height="12.935" rx="2" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.364"/>
+      <line id="a216c8be-c2bb-4692-a2c6-e12de28a89dc" x2="17.786" transform="translate(0 4.851)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.364"/>
+    </g>
+  </g>
+</g>
+
+<svg id="pending" viewBox="0 0 19.8 19.8">
+  <g id="Icon" transform="translate(0.9 0.9)">
+    <rect id="Area" width="18" height="18" transform="translate(-0.006)" fill="#fafafa" opacity="0"/>
+    <g id="Icon-2" data-name="Icon" transform="translate(0 0)">
+      <line id="_8cfd8215-46cf-4b51-801f-eae62e633e25" data-name="8cfd8215-46cf-4b51-801f-eae62e633e25" y2="3.6" transform="translate(9)" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+      <line id="_676a67a6-236c-41a0-a3d4-90194b686cf0" data-name="676a67a6-236c-41a0-a3d4-90194b686cf0" y2="3.6" transform="translate(9 14.4)" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+      <line id="_136c8fe0-5e89-4678-8d79-7a0e2d9183d3" data-name="136c8fe0-5e89-4678-8d79-7a0e2d9183d3" x2="2.547" y2="2.547" transform="translate(2.637 2.637)" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+      <line id="_569c9147-b7a3-42fa-afbc-c19a70966866" data-name="569c9147-b7a3-42fa-afbc-c19a70966866" x2="2.547" y2="2.547" transform="translate(12.816 12.816)" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+      <line id="_227120d2-7227-456a-bfbc-d17bce0daa32" data-name="227120d2-7227-456a-bfbc-d17bce0daa32" x2="3.6" transform="translate(0 9)" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+      <line id="_14e82ece-a1f1-48d8-a7e3-ceebb561a063" data-name="14e82ece-a1f1-48d8-a7e3-ceebb561a063" x2="3.6" transform="translate(14.4 9)" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+      <line id="_87740db7-61a7-4e30-ac0b-35c02188727b" data-name="87740db7-61a7-4e30-ac0b-35c02188727b" y1="2.547" x2="2.547" transform="translate(2.637 12.816)" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+      <line id="e67137ec-0348-4570-af1a-869af2826f09" y1="2.547" x2="2.547" transform="translate(12.816 2.637)" fill="none" stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+    </g>
+  </g>
+</svg>
+
+
+</svg>

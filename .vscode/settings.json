@@ -1,0 +1,43 @@
+{
+  // "editor.bracketPairColorization.enabled": true,
+  // "editor.guides.bracketPairs": true,
+  // "editor.formatOnSave": false,
+  // "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // "editor.codeActionsOnSave": [
+  //   "source.fixAll.eslint"
+  // ],
+  // "eslint.validate": [
+  //   "javascript",
+  //   "javascriptreact",
+  //   "typescript",
+  //   "vue"
+  // ],
+  // "typescript.tsdk": "node_modules/typescript/lib"
+  "vetur.validation.template": false,
+  "vetur.format.enable": false,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "vue"
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "vetur.experimental.templateInterpolationService": true,
+  "typescript.preferences.quoteStyle": "double",
+  "javascript.preferences.quoteStyle": "double",
+  "editor.formatOnSave": false,
+  // "vue3snippets.enable-compile-vue-file-on-did-save-code": true,
+  "cSpell.language": "en,fa",
+  "cSpell.userWords": [
+    "inversify",
+    "endregion",
+    "autogrow",
+    "Toman",
+    "jalali",
+    "vuelidate",
+    "گیفت",
+    "pubg",
+    "Gmails"
+  ],
+  "vue3snippets.enable-compile-vue-file-on-did-save-code": true
+}

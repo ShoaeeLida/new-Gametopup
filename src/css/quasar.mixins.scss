@@ -1,0 +1,231 @@
+@mixin ltrGradient($colorOne, $colorTwo) {
+  background: $colorOne;
+  background: -moz-linear-gradient(left, $colorOne 0%, $colorTwo 100%);
+  background: -webkit-gradient(
+    left top,
+    right top,
+    color-stop(0%, $colorOne),
+    color-stop(100%, $colorTwo)
+  );
+  background: -webkit-linear-gradient(left, $colorOne 0%, $colorTwo 100%);
+  background: -o-linear-gradient(left, $colorOne 0%, $colorTwo 100%);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from($colorOne),
+    to($colorTwo)
+  );
+  background: linear-gradient(to right, $colorOne 0%, $colorTwo 100%);
+}
+
+@mixin Deg45Gradient($colorOne, $colorTwo) {
+  background: $colorOne;
+  background: -moz-linear-gradient(-45deg, $colorOne 0%, $colorTwo 100%);
+  background: -webkit-gradient(
+    left top,
+    right bottom,
+    color-stop(0%, $colorOne),
+    color-stop(100%, $colorTwo)
+  );
+  background: -webkit-linear-gradient(-45deg, $colorOne 0%, $colorTwo 100%);
+  background: -o-linear-gradient(-45deg, $colorOne 0%, $colorTwo 100%);
+  background: -ms-linear-gradient(-45deg, $colorOne 0%, $colorTwo 100%);
+  background: linear-gradient(135deg, $colorOne 0%, $colorTwo 100%);
+}
+
+@mixin verticalGradient($colorOne, $colorTwo, $stopTwo) {
+  background: $colorOne;
+  background: -moz-linear-gradient(top, $colorOne 0%, $colorTwo $stopTwo);
+  background: -webkit-gradient(
+    left top,
+    left bottom,
+    color-stop(0%, $colorOne),
+    color-stop($stopTwo, $colorTwo)
+  );
+  background: -webkit-linear-gradient(top, $colorOne 0%, $colorTwo $stopTwo);
+  background: -o-linear-gradient(top, $colorOne 0%, $colorTwo $stopTwo);
+  background: -ms-linear-gradient(top, $colorOne 0%, $colorTwo $stopTwo);
+  background: linear-gradient(to bottom, $colorOne 0%, $colorTwo $stopTwo);
+}
+
+@mixin textGradient($colorOne, $colorTwo, $firstPoint, $secondPoint) {
+  background: $colorOne;
+  background: -moz-linear-gradient(
+    top,
+    $colorOne $firstPoint,
+    $colorTwo $secondPoint
+  );
+  background: -webkit-gradient(
+    left top,
+    left bottom,
+    color-stop($firstPoint, $colorOne),
+    color-stop($secondPoint, $colorTwo)
+  );
+  background: -webkit-linear-gradient(
+    top,
+    $colorOne $firstPoint,
+    $colorTwo $secondPoint
+  );
+  background: -o-linear-gradient(
+    top,
+    $colorOne $firstPoint,
+    $colorTwo $secondPoint
+  );
+  background: -ms-linear-gradient(
+    top,
+    $colorOne $firstPoint,
+    $colorTwo $secondPoint
+  );
+  background: linear-gradient(
+    to bottom,
+    $colorOne $firstPoint,
+    $colorTwo $secondPoint
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@mixin boxShadow($right, $bottom, $blur, $spread, $color) {
+  -webkit-box-shadow: $right $bottom $blur $spread $color;
+  -moz-box-shadow: $right $bottom $blur $spread $color;
+  box-shadow: $right $bottom $blur $spread $color;
+}
+
+@mixin calc($property, $expression) {
+  #{$property}: -moz-calc(#{$expression});
+  #{$property}: -webkit-calc(#{$expression});
+  #{$property}: calc(#{$expression});
+}
+
+@mixin rotate($value) {
+  -webkit-transform: rotate($value);
+  -moz-transform: rotate($value);
+  -ms-transform: rotate($value);
+  transform: rotate($value);
+}
+
+@mixin scale($value) {
+  -webkit-transform: scale($value);
+  -moz-transform: scale($value);
+  -ms-transform: scale($value);
+  transform: scale($value);
+}
+
+@mixin translate($left, $top) {
+  -webkit-transform: translate($left, $top);
+  -moz-transform: translate($left, $top);
+  -ms-transform: translate($left, $top);
+  transform: translate($left, $top);
+}
+
+@mixin border($width, $color) {
+  border: $width solid $color;
+}
+
+@mixin placeholder($color, $fontSize) {
+  &::-webkit-input-placeholder {
+    color: $color;
+    font-size: $fontSize;
+    text-transform: uppercase;
+  }
+  &::-moz-placeholder {
+    color: $color;
+    font-size: $fontSize;
+    text-transform: uppercase;
+  }
+  &:-ms-input-placeholder {
+    color: $color;
+    font-size: $fontSize;
+    text-transform: uppercase;
+  }
+  &:-moz-placeholder {
+    color: $color;
+    font-size: $fontSize;
+    text-transform: uppercase;
+  }
+}
+@mixin placeholderSize($fontSize) {
+  &::-webkit-input-placeholder {
+    font-size: $fontSize;
+  }
+  &::-moz-placeholder {
+    font-size: $fontSize;
+  }
+  &:-ms-input-placeholder {
+    font-size: $fontSize;
+  }
+  &:-moz-placeholder {
+    font-size: $fontSize;
+  }
+}
+@mixin placeholderColor($color) {
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+  &::-moz-placeholder {
+    color: $color;
+  }
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+  &:-moz-placeholder {
+    color: $color;
+  }
+}
+
+@mixin breakpoint($type, $breakpoint) {
+  @media only screen and (#{$type}-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin breakpoints($breakMin, $breakMax) {
+  @media only screen and (min-width: $breakMin) and (max-width: $breakMax) {
+    @content;
+  }
+}
+
+@mixin trans($time) {
+  transition: all ease-in-out $time;
+  -moz-transition: all ease-in-out $time;
+  -webkit-transition: all ease-in-out $time;
+  -o-transition: all ease-in-out $time;
+}
+
+@mixin hide_scrollbar() {
+  -moz-appearance: none !important;
+  scrollbar-width: none;
+  scrollbar-color: transparent;
+  /* width */
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    box-shadow: inset 0 0 0 rgba(0, 0, 0, 0);
+  }
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+    outline: 0 solid rgba(0, 0, 0, 0);
+  }
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: transparent;
+  }
+}
+
+@mixin fontSize($px, $base) {
+  font-size: ($px/$base) + rem;
+}
+
+@mixin flexibleWidth($px, $base) {
+  width: ($px/$base) + rem;
+}
+
+@mixin flexibleHeight($px, $base) {
+  height: ($px/$base) + rem;
+}
