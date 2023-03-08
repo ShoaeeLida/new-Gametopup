@@ -288,7 +288,7 @@
           </div>
         </div>
         <!-- Static sidebar for desktop -->
-        <div class="lg:fixed lg:inset-y-0 lg:w-64">
+        <div class="hidden lg:!block lg:fixed lg:inset-y-0 lg:w-64">
           <!-- Sidebar component, swap this element with another sidebar if you like -->
           <div
             class="flex flex-grow flex-col overflow-y-auto bg-gray-900 pt-5 pb-4 h-full"
@@ -514,7 +514,7 @@
           </div>
         </div>
         <!-- Content Area-->
-        <div class="flex flex-1 flex-col lg:pl-64 min-h-screen">
+        <div class="w-full lg:pl-64 min-h-screen">
           <div
             class="flex h-16 flex-shrink-0 border-b border-gray-200 bg-white lg:border-none"
           >
@@ -755,7 +755,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="mt-6 flex space-x-3 md:mt-0 md:ml-4">
+                  <div class="mt-6 flex space-x-3 md:mt-0 md:ml-4 !flex-nowrap">
                     <button
                       type="button"
                       class="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"

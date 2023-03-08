@@ -41,7 +41,7 @@ module.exports = configure(function (ctx) {
 
     // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js#Property%3A-css
     css: [
-      "app.scss"
+      "tailwindcss.css"
     ],
 
     // https://github.com/quasarframework/quasar/tree/dev/extras
@@ -67,6 +67,14 @@ module.exports = configure(function (ctx) {
           ? "https://api.gametopup.com"
           : "https://api.gametopup.com"
       },
+
+      // chainWebpack (chain) {
+      //   chain.resolve.alias.set("quasar/dist/quasar.css", false)
+      //   chain.resolve.alias.set("quasar/dist/quasar.prod.css", false)
+
+      //   chain.module.rule("sass").exclude.add(path.resolve(__dirname, "../../node_modules/quasar/dist/quasar.sass"))
+      //   chain.module.rule("scss").exclude.add(path.resolve(__dirname, "../../node_modules/quasar/dist/quasar.scss"))
+      // }
       // chainWebpack: chain => {
       //   chain.module
       //     .rule("i18n-resource")
@@ -130,6 +138,7 @@ module.exports = configure(function (ctx) {
 
       // Quasar plugins
       plugins: ["Notify", "Loading", "LocalStorage", "Dialog"]
+
     },
 
     // animations: "all", // --- includes all animations

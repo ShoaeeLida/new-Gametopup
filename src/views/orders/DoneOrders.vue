@@ -1,6 +1,5 @@
 <template>
   <q-table
-    class="base-tb"
     row-key="id"
     :rows="quasarTable.rows"
     :columns="quasarTable.columns"
@@ -11,150 +10,129 @@
     grid
   >
     <template v-slot:item="props">
-      <q-card class="my-card order-card q-mb-lg w-100">
-        <div class="flex items-center">
-          <div>
-            <span class="order-number">#{{ props.row.code }}</span>
-            <span class="date-time">{{ props.row.createdDateTime }}</span>
-            <strong class="order-title">{{ props.row.productTitle }}</strong>
+      <div
+        class="flex px-4 py-4 sm:px-6 hover:bg-gray-50 place-items-top flex-col sm:flex-row border-b border-gray-200 w-full"
+      >
+        <div class="flex-1 mr-0 sm:mr-5">
+          <div class="flex items-center justify-between">
+            <p class="truncate text-sm font-medium text-indigo-600">
+              {{ props.row.productTitle }}
+            </p>
           </div>
-          <q-space />
-          <!-- <div class="action-icon bg-secondary">
-            <q-icon name="person_add_alt" size="xs"></q-icon>
-          </div> -->
-        </div>
-        <div class="row q-mt-lg">
-          <div class="col-6">
-            <span class="account-info">
-              <q-icon name="mail_outline">
-                <q-tooltip>{{ $t($L.MODEL.ORDER.ACCOUNT_USERNAME) }}</q-tooltip>
-              </q-icon>
+          <div class="mt-2 flex justify-between flex-wrap">
+            <p class="mt-2 mr-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:mr-2">
+              <svg
+                class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 012 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              {{ props.row.createdDateTime }}
+            </p>
+            <p class="mt-2 mr-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:mr-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
+              >
+                <path
+                  d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"
+                />
+                <path
+                  d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"
+                />
+              </svg>
               {{ props.row.accountUsername }}
-            </span>
-          </div>
-          <!-- <div class="col-6">
-            <span class="account-info">
-              <q-icon name="lock_outline"></q-icon>
-              {{ props.row.accountPassword }}
-            </span>
-          </div> -->
-          <div class="col-6" v-if="props.row.accountName">
-            <span class="account-info">
-              <q-icon name="person_outline">
-                <q-tooltip>{{ $t($L.MODEL.ORDER.ACCOUNT_NAME) }}</q-tooltip>
-              </q-icon>
-              {{ props.row.accountName }}
-            </span>
-            <!-- <span class="account-info" v-else>
-              <q-icon name="person_outline"></q-icon>
-              |FindMe|
-            </span> -->
-          </div>
-          <div class="col-6">
-            <span class="account-info">
-              <q-icon name="save"
-                ><q-tooltip>{{ $t($L.MODEL.ORDER.ACCOUNT_PLATFORM) }}</q-tooltip></q-icon
+            </p>
+            <p class="mt-2 mr-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:mr-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
               >
+                <path
+                  fill-rule="evenodd"
+                  d="M6.32 2.577a49.255 49.255 0 0111.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 01-1.085.67L12 18.089l-7.165 3.583A.75.75 0 013.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93z"
+                  clip-rule="evenodd"
+                />
+              </svg>
               {{ props.row.accountPlatform }}
-            </span>
-          </div>
-          <div class="col-6">
-            <span class="account-info">
-              <q-icon name="person"
-                ><q-tooltip>{{ $t($L.MODEL.ORDER.CUSTOMER_NAME) }}</q-tooltip></q-icon
+            </p>
+            <p class="mt-2 mr-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:mr-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
               >
+                <path
+                  d="M5.223 2.25c-.497 0-.974.198-1.325.55l-1.3 1.298A3.75 3.75 0 007.5 9.75c.627.47 1.406.75 2.25.75.844 0 1.624-.28 2.25-.75.626.47 1.406.75 2.25.75.844 0 1.623-.28 2.25-.75a3.75 3.75 0 004.902-5.652l-1.3-1.299a1.875 1.875 0 00-1.325-.549H5.223z"
+                />
+                <path
+                  fill-rule="evenodd"
+                  d="M3 20.25v-8.755c1.42.674 3.08.673 4.5 0A5.234 5.234 0 009.75 12c.804 0 1.568-.182 2.25-.506a5.234 5.234 0 002.25.506c.804 0 1.567-.182 2.25-.506 1.42.674 3.08.675 4.5.001v8.755h.75a.75.75 0 010 1.5H2.25a.75.75 0 010-1.5H3zm3-6a.75.75 0 01.75-.75h3a.75.75 0 01.75.75v3a.75.75 0 01-.75.75h-3a.75.75 0 01-.75-.75v-3zm8.25-.75a.75.75 0 00-.75.75v5.25c0 .414.336.75.75.75h3a.75.75 0 00.75-.75v-5.25a.75.75 0 00-.75-.75h-3z"
+                  clip-rule="evenodd"
+                />
+              </svg>
               {{ props.row.customerName }}
-            </span>
+            </p>
           </div>
         </div>
-      </q-card>
+      </div>
     </template>
   </q-table>
-  <q-page-sticky
-    position="bottom-right"
-    :offset="[18, 18]"
-    class="float-action"
-    style="z-index: 11"
-  >
-    <q-fab v-model="fab1" color="dark" icon="search" direction="left" @click="openSearch">
-    </q-fab>
-  </q-page-sticky>
-  <app-search-modal
-    v-model="openSearchModal"
-    @closeFab="closeFab"
-    @onFilter="doFilter"
-  ></app-search-modal>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, defineAsyncComponent } from "vue";
+import { defineComponent, ref, onMounted } from "vue";
 import { cid, container } from "inversify-props";
 import { OrderService } from "src/core/services";
 import { QuasarTable, RequestProp } from "src/core/viewModels/quasar";
-import { $t, L } from "src/commons";
+import { $t, L, Utility } from "src/commons";
+import { useQuasar } from "quasar";
 import { FilterVm } from "src/core/viewModels/table";
 
 export default defineComponent({
-  components: {
-    AppSearchModal: defineAsyncComponent(() => import("./SearchOrder.vue")),
-  },
   setup() {
     const orderService = container.get<OrderService>(cid.OrderService);
     const quasarTable = ref(new QuasarTable());
-    const fab1 = ref(false);
+    const $q = useQuasar();
     const openSearchModal = ref(false);
 
-    quasarTable.value.columns = [
-      {
-        name: "createdDateTime",
-        label: $t(L.MODEL.ORDER.CREATED_DATE_TIME),
-        field: "createdDateTime",
-      },
-      {
-        name: "productTitle",
-        label: $t(L.MODEL.ORDER.PRODUCT_TITLE),
-        field: "productTitle",
-      },
-      {
-        name: "code",
-        label: $t(L.MODEL.ORDER.CODE),
-        field: "code",
-      },
-      {
-        name: "accountUsername",
-        label: $t(L.MODEL.ORDER.ACCOUNT_USERNAME),
-        field: "accountUsername",
-      },
-      {
-        name: "accountPassword",
-        label: $t(L.MODEL.ORDER.ACCOUNT_PASSWORD),
-        field: "accountPassword",
-      },
-      {
-        name: "accountName",
-        label: $t(L.MODEL.ORDER.ACCOUNT_NAME),
-        field: "accountName",
-      },
-      {
-        name: "accountPlatform",
-        label: $t(L.MODEL.ORDER.ACCOUNT_PLATFORM),
-        field: "accountPlatform",
-      },
-    ];
-
     async function fillDataTable(
-      props: RequestProp = orderService.currentDoneRequestProp
+      props: RequestProp = orderService.currentNewOrderRequestProp
     ) {
       props.pagination.sortBy = "createDateTime";
       props.pagination.descending = true;
       var response = await orderService.tableDoneAsync(props);
+
       quasarTable.value.setData(
         response.data,
         response.total,
-        orderService.currentDoneRequestProp.pagination
+        orderService.currentNewOrderRequestProp.pagination
       );
     }
-
+    async function takeOrder(id: string) {
+      $q.dialog({
+        message: $t(L.MESSAGE.SURE),
+        cancel: true,
+        persistent: true,
+        // eslint-disable-next-line @typescript-eslint/no-misused-promises
+      }).onOk(async () => {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        const result = await orderService.takeAsync(id);
+        Utility.showNotification(result.status, result.joinedErrors);
+        await fillDataTable(orderService.currentNewOrderRequestProp);
+      });
+    }
     let stopSyncing = false;
     async function syncDataTable() {
       while (!stopSyncing) {
@@ -205,37 +183,21 @@ export default defineComponent({
       requestProp.pagination.descending = false;
       requestProp.filterHeader = filter;
       await fillDataTable(requestProp);
-      closeFab();
-    }
-
-    function closeFab() {
-      fab1.value = false;
-      // console.log(fab1.value);
-    }
-
-    function openSearch() {
-      openSearchModal.value = true;
     }
 
     onMounted(async () => {
-      orderService.currentDoneRequestProp.setToFirstPage();
+      orderService.currentNewOrderRequestProp.setToFirstPage();
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       syncDataTable();
     });
-
     return {
       fillDataTable,
-      tab: ref("new"),
       txt: ref(""),
-      search: ref(false),
       dropdown: ref(""),
-      options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
       quasarTable,
-      closeFab,
-      openSearch,
+      takeOrder,
       openSearchModal,
       doFilter,
-      fab1,
     };
   },
 });
