@@ -6,6 +6,7 @@ import axios from "src/plugins/axios";
 import { RequestProp } from "../viewModels/quasar";
 
 
+
 const baseEndpoint = "/OrderReport";
 
 export class ReportService {
@@ -19,5 +20,6 @@ export class ReportService {
 
     return baseResponse.data;
   }
+
 
 }

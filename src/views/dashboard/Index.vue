@@ -31,7 +31,7 @@
                 </dt>
                 <dd>
                   <div class="text-lg font-medium text-gray-900">
-                    ${{ balanceModel.availableBalance }}
+                    ${{ model.accountBalance }}
                   </div>
                 </dd>
               </dl>
@@ -63,10 +63,10 @@
                 <dt class="truncate text-sm font-medium text-gray-500">Total Orders</dt>
                 <dd>
                   <div class="text-lg font-medium text-gray-900">
-                    8,192
+                    {{ model.totalOrders }}
                     <span
                       class="bg-green-500 text-white text-[0.6rem] py-1 px-2 rounded-full align-middle"
-                      >{{ model.newOrders }} New</span
+                      >0 New</span
                     >
                   </div>
                 </dd>
@@ -98,7 +98,9 @@
               <dl>
                 <dt class="truncate text-sm font-medium text-gray-500">Customers</dt>
                 <dd>
-                  <div class="text-lg font-medium text-gray-900">95</div>
+                  <div class="text-lg font-medium text-gray-900">
+                    {{ model.totalCustomers }}
+                  </div>
                 </dd>
               </dl>
             </div>
@@ -142,211 +144,97 @@
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
-              <tr class="bg-white even:bg-gray-50">
-                <td class="whitespace-nowrap py-4 pl-6 pr-3 text-sm">
-                  <div class="flex items-center">
-                    <div class="h-10 w-10 flex-shrink-0">
-                      <span
-                        class="h-10 w-10 rounded-full bg-green-100 flex justify-center place-items-center"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="2.5"
-                          stroke="currentColor"
-                          class="w-4 h-4 stroke-green-800"
+              <template v-for="(item, index) in model.transactions" :key="index">
+                <tr v-if="item.price > 0" class="bg-white even:bg-gray-50">
+                  <td class="whitespace-nowrap py-4 pl-6 pr-3 text-sm">
+                    <div class="flex items-center">
+                      <div class="h-10 w-10 flex-shrink-0">
+                        <span
+                          class="h-10 w-10 rounded-full bg-green-100 flex justify-center place-items-center"
                         >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M12 4.5v15m7.5-7.5h-15"
-                          />
-                        </svg>
-                      </span>
-                    </div>
-                    <div class="ml-4">
-                      <div class="font-medium text-gray-900">February 17, 2023</div>
-                      <div class="text-gray-500">
-                        Deposit from <span class="text-red-600">Александр</span>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="2.5"
+                            stroke="currentColor"
+                            class="w-4 h-4 stroke-green-800"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M12 4.5v15m7.5-7.5h-15"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                      <div class="ml-4">
+                        <div class="font-medium text-gray-900">
+                          {{ item.createDateTime }}
+                        </div>
+                        <div class="text-gray-500">
+                          Deposit from
+                          <span class="text-red-600">{{ item.customerName }}</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                  <div class="text-gray-900">129.00 USD</div>
-                </td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                  <span
-                    class="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800"
-                    >Successful</span
-                  >
-                </td>
-              </tr>
-              <tr class="bg-white even:bg-gray-50">
-                <td class="whitespace-nowrap py-4 pl-6 pr-3 text-sm">
-                  <div class="flex items-center">
-                    <div class="h-10 w-10 flex-shrink-0">
-                      <span
-                        class="h-10 w-10 rounded-full bg-green-100 flex justify-center place-items-center"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="2.5"
-                          stroke="currentColor"
-                          class="w-4 h-4 stroke-green-800"
+                  </td>
+                  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                    <div class="text-gray-900">{{ item.price }} USD</div>
+                  </td>
+                  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                    <span
+                      class="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800"
+                      >{{ item.status }}
+                    </span>
+                  </td>
+                </tr>
+                <tr v-else class="bg-white even:bg-gray-50">
+                  <td class="whitespace-nowrap py-4 pl-6 pr-3 text-sm">
+                    <div class="flex items-center">
+                      <div class="h-10 w-10 flex-shrink-0">
+                        <span
+                          class="h-10 w-10 rounded-full bg-red-100 flex justify-center place-items-center"
                         >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M12 4.5v15m7.5-7.5h-15"
-                          />
-                        </svg>
-                      </span>
-                    </div>
-                    <div class="ml-4">
-                      <div class="font-medium text-gray-900">February 17, 2023</div>
-                      <div class="text-gray-500">
-                        Deposit from <span class="text-red-600">Александр</span>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="2.5"
+                            stroke="currentColor"
+                            class="w-4 h-4 stroke-red-900"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M19.5 12h-15"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                      <div class="ml-4">
+                        <div class="font-medium text-gray-900">
+                          {{ item.createDateTime }}
+                        </div>
+                        <div class="text-gray-500">
+                          Withdraw to
+                          <span class="text-red-600">Personal Wallet</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                  <div class="text-gray-900">129.00 USD</div>
-                </td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                  <span
-                    class="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800"
-                    >Successful</span
-                  >
-                </td>
-              </tr>
-              <tr class="bg-white even:bg-gray-50">
-                <td class="whitespace-nowrap py-4 pl-6 pr-3 text-sm">
-                  <div class="flex items-center">
-                    <div class="h-10 w-10 flex-shrink-0">
-                      <span
-                        class="h-10 w-10 rounded-full bg-red-100 flex justify-center place-items-center"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="2.5"
-                          stroke="currentColor"
-                          class="w-4 h-4 stroke-red-900"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M19.5 12h-15"
-                          />
-                        </svg>
-                      </span>
-                    </div>
-                    <div class="ml-4">
-                      <div class="font-medium text-gray-900">February 17, 2023</div>
-                      <div class="text-gray-500">
-                        Withdraw to <span class="text-red-600">Personal Wallet</span>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                  <div class="text-gray-900">129.00 USD</div>
-                </td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                  <span
-                    class="inline-flex rounded-full bg-red-100 px-2 text-xs font-semibold leading-5 text-red-800"
-                    >Failed</span
-                  >
-                </td>
-              </tr>
-              <tr class="bg-white even:bg-gray-50">
-                <td class="whitespace-nowrap py-4 pl-6 pr-3 text-sm">
-                  <div class="flex items-center">
-                    <div class="h-10 w-10 flex-shrink-0">
-                      <span
-                        class="h-10 w-10 rounded-full bg-red-100 flex justify-center place-items-center"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="2.5"
-                          stroke="currentColor"
-                          class="w-4 h-4 stroke-red-900"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M19.5 12h-15"
-                          />
-                        </svg>
-                      </span>
-                    </div>
-                    <div class="ml-4">
-                      <div class="font-medium text-gray-900">February 17, 2023</div>
-                      <div class="text-gray-500">
-                        Withdraw to <span class="text-red-600">Personal Wallet</span>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                  <div class="text-gray-900">129.00 USD</div>
-                </td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                  <span
-                    class="inline-flex rounded-full bg-red-100 px-2 text-xs font-semibold leading-5 text-red-800"
-                    >Failed</span
-                  >
-                </td>
-              </tr>
-              <tr class="bg-white even:bg-gray-50">
-                <td class="whitespace-nowrap py-4 pl-6 pr-3 text-sm">
-                  <div class="flex items-center">
-                    <div class="h-10 w-10 flex-shrink-0">
-                      <span
-                        class="h-10 w-10 rounded-full bg-red-100 flex justify-center place-items-center"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="2.5"
-                          stroke="currentColor"
-                          class="w-4 h-4 stroke-red-900"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M19.5 12h-15"
-                          />
-                        </svg>
-                      </span>
-                    </div>
-                    <div class="ml-4">
-                      <div class="font-medium text-gray-900">February 17, 2023</div>
-                      <div class="text-gray-500">
-                        Withdraw to <span class="text-red-600">Personal Wallet</span>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                  <div class="text-gray-900">129.00 USD</div>
-                </td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                  <span
-                    class="inline-flex rounded-full bg-yellow-100 px-2 text-xs font-semibold leading-5 text-yellow-800"
-                    >Pending</span
-                  >
-                </td>
-              </tr>
+                  </td>
+                  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                    <div class="text-gray-900">{{ item.price }} USD</div>
+                  </td>
+                  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                    <span
+                      class="inline-flex rounded-full bg-red-100 px-2 text-xs font-semibold leading-5 text-red-800"
+                    >
+                      {{ item.status }}
+                    </span>
+                  </td>
+                </tr>
+              </template>
             </tbody>
           </table>
         </div>
@@ -358,30 +246,36 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref } from "vue";
 import { cid, container } from "inversify-props";
-import { ReportService, TransactionService } from "src/core/services";
-import { DashboardVm, BalanceVm } from "src/core/viewModels";
+import { ReportService } from "src/core/services";
+import { DashboardVm } from "src/core/viewModels";
 
 export default defineComponent({
   setup() {
-    const transactionService = container.get<TransactionService>(cid.TransactionService);
-    const balanceModel = ref(new BalanceVm());
-
     const reportService = container.get<ReportService>(cid.ReportService);
     const model = ref(new DashboardVm());
 
     async function getReport() {
       model.value = await reportService.dashboardReportAsync();
-      //console.log(model.value);
     }
-    async function loadBalance() {
-      balanceModel.value = await transactionService.balanceAsync();
+
+    let stopSyncing = false;
+    async function syncDataTable() {
+      while (!stopSyncing) {
+        try {
+          await getReport();
+        } catch {
+        } finally {
+          await Promise.delay(30_000);
+        }
+      }
     }
 
     onMounted(async () => {
       await getReport();
-      loadBalance();
+
+      syncDataTable();
     });
-    return { model, balanceModel };
+    return { model };
   },
 });
 </script>

@@ -13,8 +13,8 @@
           >
             <q-tab name="new" :label="$t($L.GENERAL.NEW)" />
             <q-tab name="inProgress" label="Assigned to me" />
-            <q-tab name="refunded" label="Canceled" />
-            <q-tab name="done" label="Completed" />
+            <q-tab name="canceled" label="Canceled" />
+            <q-tab name="completed" label="Completed" />
           </q-tabs>
         </div>
       </div>

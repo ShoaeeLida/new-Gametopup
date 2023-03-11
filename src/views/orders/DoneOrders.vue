@@ -108,7 +108,7 @@ export default defineComponent({
     const openSearchModal = ref(false);
 
     async function fillDataTable(
-      props: RequestProp = orderService.currentNewOrderRequestProp
+      props: RequestProp = orderService.currentDoneRequestProp
     ) {
       props.pagination.sortBy = "createDateTime";
       props.pagination.descending = true;
@@ -117,7 +117,7 @@ export default defineComponent({
       quasarTable.value.setData(
         response.data,
         response.total,
-        orderService.currentNewOrderRequestProp.pagination
+        orderService.currentDoneRequestProp.pagination
       );
     }
     async function takeOrder(id: string) {
@@ -130,7 +130,7 @@ export default defineComponent({
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         const result = await orderService.takeAsync(id);
         Utility.showNotification(result.status, result.joinedErrors);
-        await fillDataTable(orderService.currentNewOrderRequestProp);
+        await fillDataTable(orderService.currentDoneRequestProp);
       });
     }
     let stopSyncing = false;
@@ -186,7 +186,7 @@ export default defineComponent({
     }
 
     onMounted(async () => {
-      orderService.currentNewOrderRequestProp.setToFirstPage();
+      orderService.currentDoneRequestProp.setToFirstPage();
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       syncDataTable();
     });

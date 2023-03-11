@@ -41,7 +41,7 @@ module.exports = configure(function (ctx) {
 
     // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js#Property%3A-css
     css: [
-      "tailwindcss.css"
+      "app.scss"
     ],
 
     // https://github.com/quasarframework/quasar/tree/dev/extras
@@ -64,8 +64,10 @@ module.exports = configure(function (ctx) {
 
       env: {
         VUE_APP_BASE_API_URL: ctx.dev
-          ? "https://api.gametopup.com"
-          : "https://api.gametopup.com"
+          // ? "https://api.gametopup.com"
+          // : "https://api.gametopup.com"
+          ? "https://api-stage.gametopup.com"
+          : "https://api-stage.gametopup.com"
       },
 
       // chainWebpack (chain) {

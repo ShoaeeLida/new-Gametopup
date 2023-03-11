@@ -32,6 +32,7 @@ const ignoredLoadingUrls = [
   "/Transaction/list/all",
   "/Transaction/list/income",
   "/Transaction/list/withdraw",
+  "/orderReport/dashboard"
 ];
 
 axios.interceptors.request.use(

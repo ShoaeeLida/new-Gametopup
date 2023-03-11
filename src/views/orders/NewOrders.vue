@@ -89,6 +89,7 @@
         <button
           type="button"
           class="mt-5 sm:mt-0 justify-center inline-flex items-center rounded-md border border-transparent bg-cyan-600 p-2 text-sm font-medium text-white shadow-sm hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+          @click="takeOrder(props.row.id)"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

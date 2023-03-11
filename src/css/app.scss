@@ -2,6 +2,10 @@
  //@import "./quasar.mixins.scss";
  @import "./tailwindcss.css";
 
+
+ .q-tab-panel{
+  padding: 0 !important;
+ }
 // @font-face {
 //   font-family: "Helvetica";
 //   src: local("Helvetica"),
