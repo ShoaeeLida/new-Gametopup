@@ -1,25 +1,46 @@
 <template>
-  <q-dialog v-model="isOpen" persistent class="dark-modal" full-width>
-    <q-card bordered class="my-card w-100">
-      <q-card-section>
-        <div class="row no-wrap items-center">
+  <div id="slideOver-container" :class="['w-full h-full fixed inset-0', invisible]">
+    <div
+      @click="toggleSlideOver"
+      id="slideOver-bg"
+      :class="[
+        'w-full h-full duration-500 ease-out transition-all inset-0 absolute bg-gray-900 ',
+        opacity,
+      ]"
+    ></div>
+    <div
+      id="slideOver"
+      :class="[
+        'w-96 bg-white h-full absolute right-0 duration-300 ease-out transition-all',
+        translateX,
+      ]"
+    >
+      <div
+        @click="toggleSlideOver"
+        class="absolute cursor-pointer text-gray-600 top-0 w-8 h-8 flex items-center justify-center right-0 mt-5 mr-5"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          ></path>
+        </svg>
+      </div>
+      <div class="mt-14 px-12 py-4">
+        <!-- <div class="row no-wrap items-center">
           <div class="col text-subtitle1 ellipsis">{{ title }}</div>
-          <q-space />
-          <q-btn
-            icon="close"
-            color="red"
-            style="font-size: 10px"
-            flat
-            round
-            dense
-            v-close-popup
-            :disable="loading"
-          />
-        </div>
-      </q-card-section>
+        </div> -->
 
-      <q-card-section class="row items-center w-100">
         <div class="col-12 q-mb-md">
+          <label for="" class="mb-2 block">Select the reason for cancellation</label>
           <q-select
             dense
             v-model="reasonItem"
@@ -39,33 +60,34 @@
             </template>
           </q-select>
         </div>
-        <!-- <div class="col-12">
-          <q-input
-            v-model="txtMessage"
-            filled
-            type="textarea"
-            :label="$t($L.MESSAGE.REASON_REFUND)"
-          />
-        </div> -->
-      </q-card-section>
-      <q-separator />
-
-      <q-card-actions class="justify-end">
+      </div>
+      <div
+        class="relative w-full bottom-0 right-0 w-full flex items-center justify-center"
+      >
         <q-btn
           color="secondary"
           @click="onCancel"
           :loading="loading"
           :disable="loading"
           no-caps
+          class="mx-2 w-16"
         >
           {{ $t($L.ACTIONS.OK) }}
         </q-btn>
-        <q-btn color="white" no-caps outline v-close-popup :disable="loading">
+        <q-btn
+          color="red"
+          class="mx-2 w-16"
+          no-caps
+          outline
+          v-close-popup
+          :disable="loading"
+        >
           {{ $t($L.ACTIONS.CANCEL) }}
         </q-btn>
-      </q-card-actions>
-    </q-card>
-  </q-dialog>
+      </div>
+    </div>
+  </div>
+  <!-- <q-dialog v-model="isOpen" persistent class="dark-modal" full-width> </q-dialog> -->
 </template>
 
 <script lang="ts">
@@ -109,6 +131,20 @@ export default defineComponent({
     const cancelReasonList = ref<Array<OptionType>>([]);
     const loading = ref(false);
     const $q = useQuasar();
+    const invisible = ref("invisible");
+    const opacity = ref("opacity-0");
+    const translateX = ref("translate-x-full");
+
+    function toggleSlideOver() {
+      if (invisible.value == "invisible") invisible.value = "";
+      else invisible.value = "invisible";
+      if (opacity.value == "opacity-0") opacity.value = "opacity-50";
+      else opacity.value = "opacity-0";
+      if (translateX.value == "translate-x-full") translateX.value = "";
+      else translateX.value = "translate-x-full";
+      emit("update:modelValue", false);
+    }
+
     //#endregion
 
     //#region ### methods ###
@@ -130,6 +166,7 @@ export default defineComponent({
             loading.value = false;
             Utility.showNotification(result.status, result.joinedErrors);
             emit("onRegister");
+            toggleSlideOver();
             emit("update:modelValue", false);
           })
           .onCancel(() => {
@@ -158,8 +195,8 @@ export default defineComponent({
       set: (value) => {
         reasonItem.value.value = "";
         reasonItem.value.label = "";
-        //reasonItem.value = { label: "---انتخاب کنید---", value: 0, desc: "" };
         emit("update:modelValue", value);
+        toggleSlideOver();
       },
     });
     //#endregion
@@ -169,6 +206,7 @@ export default defineComponent({
       () => isOpen.value,
       (newVal) => {
         if (newVal) {
+          toggleSlideOver();
           reasonItem.value.value = "";
           reasonItem.value.label = "";
 
@@ -204,6 +242,10 @@ export default defineComponent({
       //setTextReason,
       confirm: ref(false),
       loading,
+      toggleSlideOver,
+      invisible,
+      opacity,
+      translateX,
     };
   },
 });

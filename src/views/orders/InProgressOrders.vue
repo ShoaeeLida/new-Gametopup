@@ -89,6 +89,7 @@
         <button
           type="button"
           class="mx-2 mt-5 sm:mt-0 justify-center inline-flex items-center rounded-md border border-transparent bg-green-400 p-2 text-sm font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-all"
+          @click="onOpenDoneModal(props.row.id, props.row.code)"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -105,6 +106,7 @@
         <button
           type="button"
           class="mx-2 mt-5 sm:mt-0 justify-center inline-flex items-center rounded-md border border-transparent bg-red-500 p-2 text-sm font-medium text-white shadow-sm hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-all"
+          @click="onOpenCancelModal(props.row.id, props.row.code)"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -123,10 +125,23 @@
       </div>
     </template>
   </q-table>
+  <app-cancel-modal
+    v-model="isOpenCancel"
+    :title="orderCode"
+    :id="orderId"
+    @onRegister="fillDataTable"
+  ></app-cancel-modal>
+  <app-file-upload-modal
+    v-model="isOpenUpload"
+    :id="orderId"
+    :code="orderCode"
+    @onRegister="fillDataTable"
+  >
+  </app-file-upload-modal>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted } from "vue";
+import { defineComponent, ref, onMounted, defineAsyncComponent } from "vue";
 import { cid, container } from "inversify-props";
 import { OrderService } from "src/core/services";
 import { QuasarTable, RequestProp } from "src/core/viewModels/quasar";
@@ -135,11 +150,19 @@ import { useQuasar } from "quasar";
 import { FilterVm } from "src/core/viewModels/table";
 
 export default defineComponent({
+  components: {
+    AppCancelModal: defineAsyncComponent(() => import("./Cancel.vue")),
+    AppFileUploadModal: defineAsyncComponent(() => import("./AttachFile.vue")),
+  },
   setup() {
     const orderService = container.get<OrderService>(cid.OrderService);
     const quasarTable = ref(new QuasarTable());
     const $q = useQuasar();
     const openSearchModal = ref(false);
+    const isOpenCancel = ref(false);
+    const orderCode = ref("");
+    const orderId = ref("");
+    const isOpenUpload = ref(false);
 
     async function fillDataTable(
       props: RequestProp = orderService.currentInProgressRequestProp
@@ -219,11 +242,24 @@ export default defineComponent({
       await fillDataTable(requestProp);
     }
 
+    function onOpenCancelModal(id: string, cd: string) {
+      isOpenCancel.value = !isOpenCancel.value;
+      orderCode.value = cd;
+      orderId.value = id;
+    }
+
+    function onOpenDoneModal(id: string, cd: string) {
+      isOpenUpload.value = !isOpenUpload.value;
+      orderCode.value = cd;
+      orderId.value = id;
+    }
+
     onMounted(async () => {
       orderService.currentInProgressRequestProp.setToFirstPage();
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       syncDataTable();
     });
+
     return {
       fillDataTable,
       txt: ref(""),
@@ -232,6 +268,12 @@ export default defineComponent({
       takeOrder,
       openSearchModal,
       doFilter,
+      onOpenCancelModal,
+      isOpenCancel,
+      orderCode,
+      orderId,
+      isOpenUpload,
+      onOpenDoneModal,
     };
   },
 });

@@ -3,7 +3,7 @@ import { RouteRecordRaw } from "vue-router";
 
 const routes: RouteRecordRaw[] = [
   {
-    path: "/",
+    path: "",
     component: () => import("src/layouts/AppLayout.vue"),
     children: [
       {
@@ -97,57 +97,57 @@ const routes: RouteRecordRaw[] = [
     ],
   },
 
-  // {
-  //   path: "/",
-  //   name: "publicLayout",
-  //   // meta: { requiresAuth: true },
-  //   component: () =>
-  //     import(
-  //       /* webpackChunkName: "publicLayout" */ "../layouts/AppLayout.vue"
-  //     ),
-  //   children: [
-  //     {
-  //       path: "Login",
-  //       name: "Login",
-  //       component: () =>
-  //         import(/* webpackChunkName: "Login" */ "../views/user/Login.vue"),
-  //       meta: {
-  //         title: "Login",
-  //       },
-  //     },
-  //     {
-  //       path: "SignUp",
-  //       name: "SignUp",
-  //       component: () =>
-  //         import(/* webpackChunkName: "SignUp" */ "../views/user/Signup.vue"),
-  //       meta: {
-  //         title: "SignUp",
-  //       },
-  //     },
-  //     {
-  //       path: "ChangePassword",
-  //       name: "ChangePassword",
-  //       component: () =>
-  //         import(
-  //           /* webpackChunkName: "ChangePassword" */ "../views/user/ChangePassword.vue"
-  //         ),
-  //         meta: {
-  //           title: $t(L.PAGES.CHANGE_PASSWORD),
-  //         },
-  //     },
-  //     {
-  //       path: "ForgetPassword",
-  //       name: "ForgetPassword",
-  //       component: () =>
-  //         import(
-  //           /* webpackChunkName: "ForgetPassword" */ "../views/user/ForgetPassword.vue"
-  //         ),
-  //         meta: {
-  //           title: "",
-  //         },
-  //     },
-  //   ],
-  // },
+  {
+    path: "/",
+    name: "publicLayout",
+    // meta: { requiresAuth: true },
+    component: () =>
+      import(
+        /* webpackChunkName: "publicLayout" */ "../layouts/publicLayout.vue"
+      ),
+    children: [
+      {
+        path: "Login",
+        name: "Login",
+        component: () =>
+          import(/* webpackChunkName: "Login" */ "../views/user/Login.vue"),
+        meta: {
+          title: "Login",
+        },
+      },
+      {
+        path: "SignUp",
+        name: "SignUp",
+        component: () =>
+          import(/* webpackChunkName: "SignUp" */ "../views/user/Signup.vue"),
+        meta: {
+          title: "SignUp",
+        },
+      },
+      {
+        path: "ChangePassword",
+        name: "ChangePassword",
+        component: () =>
+          import(
+            /* webpackChunkName: "ChangePassword" */ "../views/user/ChangePassword.vue"
+          ),
+          meta: {
+            title: $t(L.PAGES.CHANGE_PASSWORD),
+          },
+      },
+      {
+        path: "ForgetPassword",
+        name: "ForgetPassword",
+        component: () =>
+          import(
+            /* webpackChunkName: "ForgetPassword" */ "../views/user/ForgetPassword.vue"
+          ),
+          meta: {
+            title: "",
+          },
+      },
+    ],
+  },
 
 ];
 
