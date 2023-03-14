@@ -86,6 +86,7 @@ export default {
     changePassword: "Change Password",
     transaction: "Transactions",
     withdraw: "Withdraw",
+    category:"Category"
   },
   actions: {
     clear: "Clear",

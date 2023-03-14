@@ -43,4 +43,7 @@ export const GROUP_POLICY = {
   WITHDRAW: {
     NAME: "Withdraw",
   },
+  CATEGORY: {
+    NAME: "Category",
+  },
 };

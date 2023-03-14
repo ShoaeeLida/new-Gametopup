@@ -420,7 +420,7 @@
                   Customers
                 </router-link>
                 <router-link
-                  to="/"
+                  to="/Category"
                   class="text-gray-100 hover:text-white hover:bg-gray-600 group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md"
                 >
                   <svg

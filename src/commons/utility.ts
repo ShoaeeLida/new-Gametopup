@@ -29,7 +29,8 @@ export class Utility {
     if (
       groupPolicyName == GROUP_POLICY.CHANGE_PASSWORD.NAME ||
       groupPolicyName == GROUP_POLICY.FORGET_PASSWORD.NAME ||
-      groupPolicyName == GROUP_POLICY.WITHDRAW.NAME
+      groupPolicyName == GROUP_POLICY.WITHDRAW.NAME ||
+      groupPolicyName == GROUP_POLICY.CATEGORY.NAME
     ) {
       return true;
     }

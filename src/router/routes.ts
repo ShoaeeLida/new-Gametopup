@@ -24,7 +24,6 @@ const routes: RouteRecordRaw[] = [
           ),
           meta: {
             title: $t(L.PAGES.ORDER),
-
           },
       },
       {
@@ -36,7 +35,6 @@ const routes: RouteRecordRaw[] = [
           ),
           meta: {
             title: $t(L.PAGES.TRANSACTION),
-
           },
       },
       {
@@ -67,6 +65,17 @@ const routes: RouteRecordRaw[] = [
         component: () =>
           import(
             /* webpackChunkName: "Customer" */ "../views/customer/Customers.vue"
+          ),
+          meta: {
+            title: $t(L.PAGES.CUSTOMER),
+          },
+      },
+      {
+        path: "Category",
+        name: "Category",
+        component: () =>
+          import(
+            /* webpackChunkName: "Customer" */ "../views/category/Index.vue"
           ),
           meta: {
             title: $t(L.PAGES.CUSTOMER),

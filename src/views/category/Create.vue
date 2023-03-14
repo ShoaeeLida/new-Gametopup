@@ -39,21 +39,21 @@
           <div class="row">
             <div class="col-12 q-mt-md">
               <label class="q-mb-sm label-input block">{{
-                $t($L.MODEL.CUSTOMER.NAME)
+                $t($L.MODEL.CATEGORY.TITLE)
               }}</label>
 
               <input
                 :class="[
                   'block w-full rounded-md border-gray-300 py-4 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm sm:leading-4',
-                  v$.name.$error ? '!border-red-500 focus:ring-red-500' : '',
+                  v$.title.$error ? '!border-red-500 focus:ring-red-500' : '',
                 ]"
                 type="text"
-                :placeholder="$t($L.MODEL.CUSTOMER.NAME)"
-                v-model="createModel.name"
-                @blur="v$.name.$touch"
+                :placeholder="$t($L.MODEL.CATEGORY.TITLE)"
+                v-model="createModel.title"
+                @blur="v$.title.$touch"
               />
               <p
-                v-for="error of v$.name.$errors"
+                v-for="error of v$.title.$errors"
                 :key="error.$uid"
                 class="text-red-500 flex mt-2"
               >
@@ -73,83 +73,19 @@
               </p>
               <!-- -->
             </div>
-            <div class="col-12 q-mt-md">
-              <div class="flex items-center">
-                <input
-                  id="checked-checkbox"
-                  type="checkbox"
-                  value=""
-                  class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                  v-model="createModel.isPayFirst"
-                />
-                <label
-                  for="checked-checkbox"
-                  class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                  >{{ $t($L.MODEL.CUSTOMER.IS_PAY_FIRST) }}</label
-                >
-              </div>
-            </div>
-            <div class="col-12 q-mt-md" v-show="!createModel.isPayFirst">
-              <label class="q-mb-sm label-input">{{
-                $t($L.MODEL.CUSTOMER.MAX_DEBT)
-              }}</label>
-              <input
-                :class="[
-                  'block w-full rounded-md border-gray-300 py-4 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm sm:leading-4',
-                ]"
-                type="number"
-                :placeholder="$t($L.MODEL.CUSTOMER.MAX_DEBT)"
-                v-model="createModel.maxDebt"
-              />
-            </div>
-            <div class="col-12 q-mt-md">
-              <label class="q-mb-sm label-input">{{
-                $t($L.MODEL.CUSTOMER.TELEGRAM_AUTHENTICATION_CODE)
-              }}</label>
-              <input
-                type="text"
-                :class="[
-                  'block w-full rounded-md border-gray-300 py-4 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm sm:leading-4',
-                  v$.teleAuthCode.$error ? '!border-red-500 focus:ring-red-500' : '',
-                ]"
-                v-model="createModel.teleAuthCode"
-                :placeholder="$t($L.MODEL.CUSTOMER.TELEGRAM_AUTHENTICATION_CODE)"
-                @blur="v$.teleAuthCode.$touch"
-                readonly
-              />
-              <p
-                v-for="error of v$.teleAuthCode.$errors"
-                :key="error.$uid"
-                class="text-red-500 flex mt-2"
-              >
-                <svg
-                  class="h-5 w-5 text-red-500 mr-2"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-                {{ error.$message }}
-              </p>
 
-              <!-- <button
-                icon="token"
-                :label="$t($L.ACTIONS.GENERATE)"
-                color="secondary"
-                @click="onGenerate"
-                class="mt-3"
-              ></button> -->
-              <button
-                @click="onGenerate"
-                class="mt-3 inline-flex justify-center rounded-md border border-transparent bg-green-400 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2"
-              >
-                {{ $t($L.ACTIONS.GENERATE) }}
-              </button>
+            <div class="col-12 q-mt-md">
+              <label class="q-mb-sm label-input">{{
+                $t($L.MODEL.CATEGORY.DESCRIPTION)
+              }}</label>
+              <input
+                :class="[
+                  'block w-full rounded-md border-gray-300 py-4 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm sm:leading-4',
+                ]"
+                type="text"
+                :placeholder="$t($L.MODEL.CUSTOMER.MAX_DEBT)"
+                v-model="createModel.description"
+              />
             </div>
           </div>
           <div class="row mt-7 justify-right">
@@ -174,10 +110,10 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed, watch } from "vue";
-import { CustomerCreateVm } from "src/core/viewModels";
+import { CategoryCreateVm } from "src/core/viewModels";
 import { cid, container } from "inversify-props";
-import { CustomerService } from "src/core/services";
-import { $t, L, MessageTypeEnum, Utility } from "src/commons";
+import { CategoryService } from "src/core/services";
+import { MessageTypeEnum, Utility } from "src/commons";
 
 export default defineComponent({
   props: {
@@ -189,8 +125,8 @@ export default defineComponent({
   },
   emits: ["update:modelValue", "onRegister", "closeFab"],
   setup(props, { emit }) {
-    const customerService = container.get<CustomerService>(cid.CustomerService);
-    const createModel = ref(new CustomerCreateVm());
+    const categoryService = container.get<CategoryService>(cid.CategoryService);
+    const createModel = ref(new CategoryCreateVm());
     const v$ = createModel.value.v$(createModel);
     const invisible = ref("invisible");
     const opacity = ref("opacity-0");
@@ -228,25 +164,17 @@ export default defineComponent({
     //#endregion
 
     async function onSubmit() {
-      if (
-        createModel.value.isPayFirst == false &&
-        (createModel.value.maxDebt == null || createModel.value.maxDebt <= 0)
-      ) {
-        Utility.showNotification(MessageTypeEnum.Danger, $t(L.MESSAGE.EMPTY_MAX_DEBT));
-        return;
-      }
-
       v$.value.$touch();
       if (v$.value.$invalid) {
         return;
       }
 
-      var result = await customerService.addAsync(createModel.value);
+      var result = await categoryService.addAsync(createModel.value);
       Utility.showNotification(result.status, result.message);
 
       if (result.status == MessageTypeEnum.Success) {
         emit("update:modelValue", false);
-        emit("onRegister", customerService.currentRequestProp);
+        emit("onRegister", categoryService.currentRequestProp);
         onReset();
         toggleSlideOver();
       }
@@ -254,12 +182,7 @@ export default defineComponent({
 
     function onReset() {
       v$.value.$reset();
-      createModel.value = new CustomerCreateVm();
-    }
-    function onGenerate(e: FormDataEvent) {
-      e.preventDefault();
-      let randomCode = (Math.random() + 1).toString(36).substring(7);
-      createModel.value.teleAuthCode = randomCode;
+      createModel.value = new CategoryCreateVm();
     }
 
     return {
@@ -269,7 +192,6 @@ export default defineComponent({
       createModel,
       v$,
       onReset,
-      onGenerate,
       toggleSlideOver,
       invisible,
       opacity,

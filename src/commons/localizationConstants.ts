@@ -83,6 +83,7 @@ export const L = {
     CHANGE_PASSWORD: "pages.changePassword",
     TRANSACTION: "pages.transaction",
     WITHDRAW: "pages.withdraw",
+    CATEGORY: "pages.category",
   },
   ACTIONS: {
     CLEAR: "actions.clear",
@@ -99,7 +100,7 @@ export const L = {
     CHANGE: "actions.change",
     REFRESH: "actions.refresh",
     WITHDRAW: "actions.withdraw",
-    CONFIRM_WITHDRAW:"actions.confirmWithdraw"
+    CONFIRM_WITHDRAW: "actions.confirmWithdraw",
   },
   MESSAGE: {
     FAILED: "message.failed",
@@ -190,7 +191,7 @@ export const L = {
       CREATE_DATE_TIME: "model.transaction.createDateTime",
       PRICE: "model.transaction.price",
       DESCRIPTION: "model.transaction.description",
-      STATUS:"model.transaction.status"
+      STATUS: "model.transaction.status",
     },
     WITHDRAW: {
       BALANCE: {

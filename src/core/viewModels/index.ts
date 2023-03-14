@@ -18,6 +18,7 @@ export * from "./customerVm/customerCreateVm";
 export * from "./customerVm/customerEditVm";
 
 export * from "./categoryVm/categoryVm";
+export * from "./categoryVm/categoryCreateVm";
 
 export * from "./productVm/productVm";
 export * from "./productVm/productCreateVm";
