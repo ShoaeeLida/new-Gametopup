@@ -44,24 +44,33 @@
                       />
                     </div>
                     <div class="ml-4">
-                      <div class="font-medium text-gray-900">{{ props.row.name }}</div>
-                      <div class="text-gray-500">{{ props.row.teleAuthCode }}</div>
+                      <div class="font-medium text-gray-900">
+                        {{ props.row.firstName }} {{ props.row.lastName }}
+                      </div>
+                      <div class="text-gray-500">{{ props.row.email }}</div>
                     </div>
                   </div>
                 </td>
               </template>
-              <template v-slot:body-cell-maxDebt="props">
+              <template v-slot:body-cell-field="props">
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                  <div class="text-gray-900">{{ props.row.maxDebt }}</div>
-                  <div class="text-gray-500">In-Game Purchase</div>
+                  <div class="text-gray-900">{{ props.row.field }}</div>
+                  <div class="text-gray-500">{{ props.row.field }}</div>
                 </td>
               </template>
-              <template v-slot:body-cell-teleAuthCode="props">
+              <template v-slot:body-cell-status="props">
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                   <span
+                    v-if="props.row.isActive"
                     class="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800"
                   >
-                    {{ props.row.teleAuthCode }}
+                    Active
+                  </span>
+                  <span
+                    v-else
+                    class="inline-flex rounded-full bg-gray-100 px-2 text-xs font-semibold leading-5 text-gray-800"
+                  >
+                    Deactive
                   </span>
                 </td>
               </template>
@@ -172,18 +181,20 @@ export default defineComponent({
       {
         name: "name",
         label: $t(L.MODEL.CUSTOMER.NAME),
-        field: "name",
+        field: "",
+      },
+
+      {
+        name: "field",
+        label: "Shop",
+        field: "field",
       },
       {
-        name: "maxDebt",
-        label: $t(L.MODEL.CUSTOMER.MAX_DEBT),
-        field: "maxDebt",
+        name: "status",
+        label: "Status",
+        field: "isActive",
       },
-      {
-        name: "teleAuthCode",
-        label: $t(L.MODEL.CUSTOMER.TELEGRAM_AUTHENTICATION_CODE),
-        field: "teleAuthCode",
-      },
+
       {
         name: "Operations",
         label: "Action",

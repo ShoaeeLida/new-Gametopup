@@ -136,6 +136,11 @@ export const L = {
     },
     CUSTOMER: {
       NAME: "model.customer.name",
+      FIRST_NAME:"model.customer.firstName",
+      LAST_NAME:"model.customer.lastName",
+      EMAIL:"model.customer.email",
+      FIELD:"model.customer.field",
+      IS_ACTIVE:"model.customer.isActive",
       TELEGRAM_USER_ID: "model.customer.telegramUserId",
       TELEGRAM_AUTHENTICATION_CODE: "model.customer.telegramAuthenticationCode",
       IS_PAY_FIRST: "model.customer.isPayFirst",

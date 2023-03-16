@@ -3,10 +3,9 @@
     <div class="h-full bg-gray-50 overflow-x-hidden overflow-y-auto">
       <div class="min-h-full">
         <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
-        <div class="relative z-40 hidden" role="dialog" aria-modal="true">
+        <div :class="['relative z-40 ', displayMenu]" role="dialog" aria-modal="true">
           <!--
           Off-canvas menu backdrop, show/hide based on off-canvas menu state.
-
           Entering: "transition-opacity ease-linear duration-300"
             From: "opacity-0"
             To: "opacity-100"
@@ -14,9 +13,14 @@
             From: "opacity-100"
             To: "opacity-0"
         -->
-          <div class="fixed inset-0 bg-gray-600 bg-opacity-75"></div>
+          <div
+            :class="[
+              'fixed inset-0 bg-gray-600 duration-300 ease-out transition-all',
+              bgOpacity,
+            ]"
+          ></div>
 
-          <div class="fixed inset-0 z-40 flex">
+          <div class="fixed inset-0 z-40 flex" @click="toggleMobileMenu">
             <!--
             Off-canvas menu, show/hide based on off-canvas menu state.
 
@@ -28,7 +32,10 @@
               To: "-translate-x-full"
           -->
             <div
-              class="relative flex w-full max-w-xs flex-1 flex-col bg-gray-700 pt-5 pb-4"
+              :class="[
+                'relative w-full max-w-xs bg-gray-700 pt-5 pb-4 duration-300 ease-out transition-all',
+                translateX,
+              ]"
             >
               <!--
               Close button, show/hide based on off-canvas menu state.
@@ -45,7 +52,6 @@
                   type="button"
                   class="ml-1 flex h-10 w-10 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                 >
-                  <!-- Heroicon name: outline/x-mark -->
                   <svg
                     class="h-6 w-6 text-white"
                     xmlns="http://www.w3.org/2000/svg"
@@ -63,22 +69,22 @@
                   </svg>
                 </button>
               </div>
-
-              <div class="flex flex-shrink-0 items-center px-4">
+              <div class="items-center px-4">
                 <img
                   class="h-8 w-auto"
                   src="https://tailwindui.com/img/logos/mark.svg?color=gray&shade=300"
                   alt="Easywire logo"
                 />
               </div>
-              <nav
-                class="mt-5 h-full flex-shrink-0 divide-y divide-gray-800 overflow-y-auto"
+
+              <div
+                class="divide-y divide-gray-800 overflow-y-auto h-[85vh]"
                 aria-label="Sidebar"
               >
-                <div class="space-y-1 px-2">
+                <div class="mt-5 space-y-1 px-2">
                   <!-- Current: "bg-gray-800 text-white", Default: "text-gray-100 hover:text-white hover:bg-gray-600" -->
-                  <a
-                    href="/"
+                  <router-link
+                    to="dashboard"
                     class="bg-gray-800 text-white group flex items-center px-2 py-2 text-base font-medium rounded-md"
                     aria-current="page"
                   >
@@ -99,9 +105,9 @@
                       />
                     </svg>
                     Dashboard
-                  </a>
-                  <a
-                    href="orders.html"
+                  </router-link>
+                  <router-link
+                    to="order"
                     class="text-gray-100 hover:text-white hover:bg-gray-600 group flex items-center px-2 py-2 text-base font-medium rounded-md"
                   >
                     <svg
@@ -119,9 +125,9 @@
                       />
                     </svg>
                     Orders
-                  </a>
-                  <a
-                    href="transactions.html"
+                  </router-link>
+                  <router-link
+                    to="Transaction"
                     class="text-gray-100 hover:text-white hover:bg-gray-600 group flex items-center px-2 py-2 text-base font-medium rounded-md"
                   >
                     <!-- Heroicon name: outline/clock -->
@@ -141,9 +147,9 @@
                       />
                     </svg>
                     Transactions
-                  </a>
-                  <a
-                    href="payout.html"
+                  </router-link>
+                  <router-link
+                    to="Withdraw"
                     class="text-gray-100 hover:text-white hover:bg-gray-600 group flex items-center px-2 py-2 text-base font-medium rounded-md"
                   >
                     <!-- Heroicon name: outline/credit-card -->
@@ -163,10 +169,10 @@
                       />
                     </svg>
                     Payout
-                  </a>
+                  </router-link>
 
-                  <a
-                    href="customers.html"
+                  <router-link
+                    to="Customer"
                     class="text-gray-100 hover:text-white hover:bg-gray-600 group flex items-center px-2 py-2 text-base font-medium rounded-md"
                   >
                     <!-- Heroicon name: outline/user-group -->
@@ -186,9 +192,9 @@
                       />
                     </svg>
                     Customers
-                  </a>
-                  <a
-                    href="categories.html"
+                  </router-link>
+                  <router-link
+                    to="Category"
                     class="text-gray-100 hover:text-white hover:bg-gray-600 group flex items-center px-2 py-2 text-base font-medium rounded-md"
                   >
                     <svg
@@ -207,9 +213,9 @@
                     </svg>
 
                     Categories
-                  </a>
-                  <a
-                    href="products.html"
+                  </router-link>
+                  <router-link
+                    to="Product"
                     class="text-gray-100 hover:text-white hover:bg-gray-600 group flex items-center px-2 py-2 text-base font-medium rounded-md"
                   >
                     <!-- Heroicon name: outline/document-chart-bar -->
@@ -228,12 +234,12 @@
                       />
                     </svg>
                     Products
-                  </a>
+                  </router-link>
                 </div>
                 <div class="mt-6 pt-6">
                   <div class="space-y-1 px-2">
-                    <a
-                      href="settings.html"
+                    <router-link
+                      to="UserManagement"
                       class="group flex items-center rounded-md px-2 py-2 text-base font-medium text-gray-100 hover:bg-gray-600 hover:text-white"
                     >
                       <!-- Heroicon name: outline/cog -->
@@ -253,10 +259,10 @@
                         />
                       </svg>
                       Settings
-                    </a>
+                    </router-link>
 
-                    <a
-                      href="#"
+                    <router-link
+                      to="#"
                       class="group flex items-center rounded-md px-2 py-2 text-base font-medium text-gray-100 hover:bg-gray-600 hover:text-white"
                     >
                       <!-- Heroicon name: outline/question-mark-circle -->
@@ -276,10 +282,10 @@
                         />
                       </svg>
                       Help
-                    </a>
+                    </router-link>
                   </div>
                 </div>
-              </nav>
+              </div>
             </div>
 
             <div class="w-14 flex-shrink-0" aria-hidden="true">
@@ -465,7 +471,7 @@
               <div class="mt-6 pt-6">
                 <div class="space-y-1 px-2">
                   <router-link
-                    to="/"
+                    to="/UserManagement"
                     class="group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 text-gray-100 hover:bg-gray-600 hover:text-white"
                   >
                     <!-- Heroicon name: outline/cog -->
@@ -543,6 +549,7 @@
             <button
               type="button"
               class="border-r border-gray-200 px-4 text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 lg:hidden"
+              @click="toggleMobileMenu"
             >
               <span class="sr-only">Open sidebar</span>
               <!-- Heroicon name: outline/bars-3-center-left -->
@@ -632,6 +639,7 @@
                       id="user-menu-button"
                       aria-expanded="false"
                       aria-haspopup="true"
+                      @click="effectDropUser"
                     >
                       <span
                         class="inline-block h-8 w-8 overflow-hidden rounded-full bg-gray-100"
@@ -647,13 +655,14 @@
                         </svg>
                       </span>
 
-                      <span class="ml-3 hidden text-sm font-medium text-gray-700 lg:block"
-                        ><span class="sr-only">Open user menu for </span>Emilia
-                        Birch</span
+                      <span
+                        class="ml-3 hidden text-sm font-medium text-gray-700 lg:!block"
+                        ><span class="sr-only">Open user menu for </span
+                        >{{ userName }}</span
                       >
                       <!-- Heroicon name: mini/chevron-down -->
                       <svg
-                        class="ml-1 hidden h-5 w-5 flex-shrink-0 text-gray-400 lg:block"
+                        class="ml-1 hidden h-5 w-5 flex-shrink-0 text-gray-400 lg:!block"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
@@ -668,36 +677,40 @@
                     </button>
                   </div>
                   <div
-                    class="hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                    :class="[
+                      ' absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none',
+                      toggleUserDrop,
+                    ]"
                     role="menu"
                     aria-orientation="vertical"
                     aria-labelledby="user-menu-button"
                     tabindex="-1"
                   >
-                    <a
-                      href="#"
+                    <router-link
+                      to="/UserManagement"
                       class="block px-4 py-2 text-sm text-gray-700"
                       role="menuitem"
                       tabindex="-1"
                       id="user-menu-item-0"
-                      >Your Profile</a
+                      >Your Profile</router-link
                     >
-                    <a
-                      href="#"
+                    <router-link
+                      to="/UserManagement"
                       class="block px-4 py-2 text-sm text-gray-700"
                       role="menuitem"
                       tabindex="-1"
                       id="user-menu-item-1"
-                      >Settings</a
+                      >Settings</router-link
                     >
-                    <a
-                      href="#"
+                    <div
+                      @click="logout"
                       class="block px-4 py-2 text-sm text-gray-700"
                       role="menuitem"
                       tabindex="-1"
                       id="user-menu-item-2"
-                      >Logout</a
                     >
+                      Logout
+                    </div>
                   </div>
                 </div>
               </div>
@@ -806,9 +819,9 @@
 </template>
 
 <script lang="ts">
-import { useQuasar } from "quasar";
+import { LocalStorage, useQuasar } from "quasar";
 import { GROUP_POLICY, LOCAL_STORAGE } from "src/commons";
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import { useRouter } from "vue-router";
 
 export default defineComponent({
@@ -816,6 +829,7 @@ export default defineComponent({
   components: {},
   setup() {
     const $q = useQuasar();
+    const userName = LocalStorage.getItem(LOCAL_STORAGE.FULL_NAME);
     const router = useRouter();
     async function logout() {
       $q.localStorage.remove(LOCAL_STORAGE.TOKEN);
@@ -823,7 +837,36 @@ export default defineComponent({
       $q.localStorage.remove(LOCAL_STORAGE.GROUP_POLICIES);
       await router.push({ name: GROUP_POLICY.LOGIN.NAME });
     }
-    return { forceReload: 0, logout };
+    const toggleUserDrop = ref("hidden");
+    function effectDropUser() {
+      if (toggleUserDrop.value == "") toggleUserDrop.value = "hidden";
+      else toggleUserDrop.value = "";
+    }
+
+    const bgOpacity = ref("bg-opacity-0");
+    const displayMenu = ref("invisible");
+    const translateX = ref("-translate-x-full");
+
+    function toggleMobileMenu() {
+      if (displayMenu.value == "invisible") displayMenu.value = "";
+      else displayMenu.value = "invisible";
+      if (bgOpacity.value == "bg-opacity-0") bgOpacity.value = "bg-opacity-75";
+      else bgOpacity.value = "bg-opacity-0";
+      if (translateX.value == "-translate-x-full") translateX.value = "translate-x-0";
+      else translateX.value = "-translate-x-full";
+    }
+
+    return {
+      forceReload: 0,
+      logout,
+      userName,
+      toggleUserDrop,
+      effectDropUser,
+      bgOpacity,
+      displayMenu,
+      translateX,
+      toggleMobileMenu,
+    };
   },
 });
 </script>

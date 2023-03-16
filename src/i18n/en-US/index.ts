@@ -140,6 +140,11 @@ export default {
     },
     customer: {
       name: "Name",
+      firstName:"First Name",
+      lastName:"Last Name",
+      email:"Email",
+      field:"Field",
+      isActive:"isActive",
       telegramUserId: "Telegram User Id",
       telegramAuthenticationCode: "Telegram Authentication Code",
       isPayFirst: "Is Pay First",

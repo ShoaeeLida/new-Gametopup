@@ -12,7 +12,7 @@
               <label class="q-mb-sm label-input">{{ $t($L.MODEL.CUSTOMER.NAME) }}</label>
               <q-input
                 outlined
-                v-model="editModel.name"
+                v-model="editModel.firstName"
                 autofocus
                 :placeholder="$t($L.MODEL.CUSTOMER.NAME)"
                 @blur="v$.name.$touch"
@@ -113,7 +113,7 @@ export default defineComponent({
       async (newVal) => {
         if (newVal) {
           model.value = await customerService.detailAsync(props.selectedId.toString());
-          title.value = `${model.value.name}`;
+          title.value = `${model.value.firstName} ${model.value.lastName}`;
           var plainModel = instanceToPlain(model.value);
           editModel.value = plainToInstance(CustomerEditVm, plainModel);
           console.log(editModel);

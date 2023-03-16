@@ -9,30 +9,15 @@
         <q-card-section class="q-mt-lg">
           <div class="row">
             <div class="col-12 q-mt-md">
-              <q-select
-                dense
-                v-model="editModel.productCategoryId"
-                :options="catList"
-                outlined
-                emit-value
-                map-options
-                @blur="v$.productCategoryId.$touch"
-                :error="v$.productCategoryId.$error"
-                :error-message="
-                  v$.productCategoryId.$errors.map((x) => x.$message).join(',')
-                "
-              />
-            </div>
-            <div class="col-12 q-mt-md">
               <label class="q-mb-sm label-input">{{ $t($L.MODEL.PRODUCTS.TITLE) }}</label>
               <q-input
                 outlined
-                v-model="editModel.title"
+                v-model="editModel.productTitle"
                 autofocus
                 :placeholder="$t($L.MODEL.PRODUCTS.TITLE)"
-                @blur="v$.title.$touch"
-                :error="v$.title.$error"
-                :error-message="v$.title.$errors.map((x) => x.$message).join(',')"
+                @blur="v$.productTitle.$touch"
+                :error="v$.productTitle.$error"
+                :error-message="v$.productTitle.$errors.map((x) => x.$message).join(',')"
               />
             </div>
             <div class="col-12 q-mt-md">
@@ -101,10 +86,9 @@ export default defineComponent({
       async (newVal) => {
         if (newVal) {
           model.value = await productService.detailAsync(props.selectedId.toString());
-          title.value = `${model.value.title}`;
+          title.value = `${model.value.productTitle}`;
           var plainModel = instanceToPlain(model.value);
           editModel.value = plainToInstance(ProductEditVm, plainModel);
-          editModel.value.productCategoryId = model.value.productCategoryId.toString();
         }
       }
     );
@@ -128,7 +112,7 @@ export default defineComponent({
     function onReset() {
       v$.value.$reset();
       editModel.value = new ProductEditVm();
-      editModel.value.id = props.selectedId.toString();
+      editModel.value.productId = props.selectedId.toString();
       emit("update:modelValue", false);
     }
 

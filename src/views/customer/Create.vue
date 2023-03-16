@@ -1,5 +1,5 @@
 <template>
-  <div id="slideOver-container" :class="['w-full h-full fixed inset-0', invisible]">
+  <div id="slideOver-container" :class="['w-full h-full fixed inset-0 ', invisible]">
     <div
       @click="toggleSlideOver"
       id="slideOver-bg"
@@ -11,7 +11,7 @@
     <div
       id="slideOver"
       :class="[
-        'w-96 bg-white h-full absolute right-0 duration-300 ease-out transition-all',
+        'w-96 bg-white h-full absolute right-0 duration-300 ease-out transition-all overflow-y-auto',
         translateX,
       ]"
     >
@@ -39,21 +39,21 @@
           <div class="row">
             <div class="col-12 q-mt-md">
               <label class="q-mb-sm label-input block">{{
-                $t($L.MODEL.CUSTOMER.NAME)
+                $t($L.MODEL.CUSTOMER.FIRST_NAME)
               }}</label>
 
               <input
                 :class="[
                   'block w-full rounded-md border-gray-300 py-4 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm sm:leading-4',
-                  v$.name.$error ? '!border-red-500 focus:ring-red-500' : '',
+                  v$.firstName.$error ? '!border-red-500 focus:ring-red-500' : '',
                 ]"
                 type="text"
-                :placeholder="$t($L.MODEL.CUSTOMER.NAME)"
-                v-model="createModel.name"
-                @blur="v$.name.$touch"
+                :placeholder="$t($L.MODEL.CUSTOMER.FIRST_NAME)"
+                v-model="createModel.firstName"
+                @blur="v$.firstName.$touch"
               />
               <p
-                v-for="error of v$.name.$errors"
+                v-for="error of v$.firstName.$errors"
                 :key="error.$uid"
                 class="text-red-500 flex mt-2"
               >
@@ -71,6 +71,95 @@
                 </svg>
                 {{ error.$message }}
               </p>
+              <!-- -->
+            </div>
+            <div class="col-12 q-mt-md">
+              <label class="q-mb-sm label-input block">
+                {{ $t($L.MODEL.CUSTOMER.LAST_NAME) }}
+              </label>
+
+              <input
+                :class="[
+                  'block w-full rounded-md border-gray-300 py-4 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm sm:leading-4',
+                  v$.lastName.$error ? '!border-red-500 focus:ring-red-500' : '',
+                ]"
+                type="text"
+                :placeholder="$t($L.MODEL.CUSTOMER.LAST_NAME)"
+                v-model="createModel.lastName"
+                @blur="v$.lastName.$touch"
+              />
+              <p
+                v-for="error of v$.lastName.$errors"
+                :key="error.$uid"
+                class="text-red-500 flex mt-2"
+              >
+                <svg
+                  class="h-5 w-5 text-red-500 mr-2"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                {{ error.$message }}
+              </p>
+              <!-- -->
+            </div>
+            <div class="col-12 q-mt-md">
+              <label class="q-mb-sm label-input block">
+                {{ $t($L.MODEL.CUSTOMER.EMAIL) }}
+              </label>
+
+              <input
+                :class="[
+                  'block w-full rounded-md border-gray-300 py-4 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm sm:leading-4',
+                  v$.email.$error ? '!border-red-500 focus:ring-red-500' : '',
+                ]"
+                type="text"
+                :placeholder="$t($L.MODEL.CUSTOMER.EMAIL)"
+                v-model="createModel.email"
+                @blur="v$.email.$touch"
+              />
+              <p
+                v-for="error of v$.email.$errors"
+                :key="error.$uid"
+                class="text-red-500 flex mt-2"
+              >
+                <svg
+                  class="h-5 w-5 text-red-500 mr-2"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                {{ error.$message }}
+              </p>
+              <!-- -->
+            </div>
+            <div class="col-12 q-mt-md">
+              <label class="q-mb-sm label-input block">
+                {{ $t($L.MODEL.CUSTOMER.FIELD) }}
+              </label>
+
+              <input
+                :class="[
+                  'block w-full rounded-md border-gray-300 py-4 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm sm:leading-4',
+                  ,
+                ]"
+                type="text"
+                :placeholder="$t($L.MODEL.CUSTOMER.FIELD)"
+                v-model="createModel.field"
+              />
+
               <!-- -->
             </div>
             <div class="col-12 q-mt-md">

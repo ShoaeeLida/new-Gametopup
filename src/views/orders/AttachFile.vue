@@ -11,7 +11,7 @@
     <div
       id="slideOver"
       :class="[
-        'w-96 bg-white h-full absolute right-0 duration-300 ease-out transition-all',
+        'w-96 bg-white h-full absolute right-0 duration-300 ease-out transition-all overflow-y-auto',
         translateX,
       ]"
     >

@@ -1,7 +1,7 @@
 import { BaseVm } from "./../common/baseVm";
 export class ProductVm extends BaseVm {
-  title: string = "";
-  productType: number = 0;
-  productCategoryId: string = "";
+  productTitle: string = "";
+  isActive: boolean = true;
+  categoryName: string = "";
   price: string = "0";
 }

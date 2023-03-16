@@ -4,17 +4,14 @@ import { L, $t } from "src/commons";
 import { Ref } from "vue";
 
 export class ProductCreateVm  {
-  title: string = "";
-  productType: number = 0;
-  productCategoryId: string = "";
+  productTitle: string = "";
+  isActive: boolean = true;
+  categoryName: string = "";
   price: string = "0";
 
   v$(ref: Ref<ProductCreateVm>) {
     const rules = {
-      title: {
-        required: helpers.withMessage($t(L.VALIDATION.REQUIRED), required),
-      },
-      productCategoryId: {
+      productTitle: {
         required: helpers.withMessage($t(L.VALIDATION.REQUIRED), required),
       },
       price: {
