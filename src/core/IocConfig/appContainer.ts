@@ -8,7 +8,8 @@ import {
   ProductService,
   OrderService,
   ReportService,
-  TransactionService
+  TransactionService,
+  PayoutService
 } from "../services";
 
 export default function buildDependencyContainer(): void {
@@ -20,4 +21,5 @@ export default function buildDependencyContainer(): void {
   container.addSingleton(OrderService, "OrderService");
   container.addSingleton(ReportService, "ReportService");
   container.addSingleton(TransactionService, "TransactionService");
+  container.addSingleton(PayoutService, "PayoutService");
 }

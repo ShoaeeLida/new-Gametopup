@@ -76,8 +76,7 @@
               </template>
               <template v-slot:body-cell-Operations="props">
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                  <button class="mr-2" title="Settings">
-                    <span class="hidden">{{ props.row.id }}</span>
+                  <button class="mr-2" title="Settings" @click="openEdit(props.row.id)">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -143,6 +142,11 @@
     v-model="openCreateModal"
     @onRegister="fillCustomerList"
   ></app-create-modal>
+  <app-edit-modal
+    v-model="openEditModal"
+    :selectedId="selectedItem"
+    @onRegister="fillCustomerList"
+  ></app-edit-modal>
 </template>
 
 <script lang="ts">
@@ -164,7 +168,7 @@ import EventBus from "../../plugins/event";
 export default defineComponent({
   components: {
     AppCreateModal: defineAsyncComponent(() => import("./Create.vue")),
-    //AppEditModal: defineAsyncComponent(() => import("./Edit.vue")),
+    AppEditModal: defineAsyncComponent(() => import("./Edit.vue")),
   },
   setup() {
     const customerService = container.get<CustomerService>(cid.CustomerService);

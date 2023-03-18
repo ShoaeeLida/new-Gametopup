@@ -43,6 +43,9 @@ export * from "./transactionVm/transactionVm";
 
 export * from "./withdrawal/balanceVm";
 export * from "./withdrawal/withdrawalVm";
+export * from "./withdrawal/paymentMethodVm";
+export * from "./withdrawal/payoutVm";
+
 
 
 

@@ -10,6 +10,7 @@
           <button
             type="button"
             class="block rounded-md bg-indigo-600 py-1.5 px-3 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            @click="openCreate"
           >
             Add a product
           </button>
@@ -69,8 +70,11 @@
                 </template>
                 <template v-slot:body-cell-Action="props">
                   <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                    <button class="mr-2" title="Edit">
-                      <span class="hidden">{{ props.row.id }}</span>
+                    <button
+                      class="mr-2"
+                      title="Edit"
+                      @click="openEdit(props.row.productId)"
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -111,16 +115,32 @@
       </div>
     </div>
   </div>
+  <app-create-modal
+    v-if="loadCreateModal"
+    v-model="openCreateModal"
+    @onRegister="fillDataTable"
+    @closeFab="closeFab"
+  ></app-create-modal>
+  <app-edit-modal
+    v-if="loadEditModal"
+    v-model="openEditModal"
+    :selectedId="selectedItem"
+    @onRegister="fillDataTable"
+  ></app-edit-modal>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, computed } from "vue";
+import { defineComponent, ref, onMounted, computed, defineAsyncComponent } from "vue";
 import { cid, container } from "inversify-props";
 import { ProductService } from "src/core/services";
 import { QuasarTable, RequestProp } from "src/core/viewModels/quasar";
 import { NestedProductVm } from "src/core/viewModels";
 
 export default defineComponent({
+  components: {
+    AppCreateModal: defineAsyncComponent(() => import("./Create.vue")),
+    AppEditModal: defineAsyncComponent(() => import("./Edit.vue")),
+  },
   setup() {
     const productService = container.get<ProductService>(cid.ProductService);
 

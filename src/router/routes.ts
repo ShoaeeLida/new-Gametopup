@@ -42,7 +42,7 @@ const routes: RouteRecordRaw[] = [
         name: "Withdraw",
         component: () =>
           import(
-            /* webpackChunkName: "Withdraw" */ "../views/withdraw/Withdraw.vue"
+            /* webpackChunkName: "Withdraw" */ "../views/payout/Index.vue"
           ),
           meta: {
             title: $t(L.PAGES.WITHDRAW),

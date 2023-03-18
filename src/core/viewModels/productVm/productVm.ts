@@ -4,4 +4,5 @@ export class ProductVm extends BaseVm {
   isActive: boolean = true;
   categoryName: string = "";
   price: string = "0";
+
 }
