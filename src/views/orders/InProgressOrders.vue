@@ -15,7 +15,10 @@
       >
         <div class="flex-1 mr-0 sm:mr-5">
           <div class="flex items-center justify-between">
-            <p class="truncate text-sm font-medium text-indigo-600">
+            <p
+              @click="$Utility.copyToClipboard(props.row.productTitle)"
+              class="cursor-pointer truncate text-sm font-medium text-indigo-600"
+            >
               {{ props.row.productTitle }}
             </p>
           </div>
@@ -35,7 +38,10 @@
               </svg>
               {{ props.row.createdDateTime }}
             </p>
-            <p class="mt-2 mr-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:mr-2">
+            <p
+              @click="$Utility.copyToClipboard(props.row.accountUsername)"
+              class="cursor-pointer mt-2 mr-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:mr-2"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -51,7 +57,31 @@
               </svg>
               {{ props.row.accountUsername }}
             </p>
-            <p class="mt-2 mr-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:mr-2">
+            <p
+              @click="$Utility.copyToClipboard(props.row.accountPassword)"
+              class="cursor-pointer mt-2 mr-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:mr-2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                enable-background="new 0 0 24 24"
+                height="24px"
+                viewBox="0 0 24 24"
+                width="24px"
+                fill="currentColor"
+              >
+                <g><rect fill="none" height="24" width="24" /></g>
+                <g>
+                  <path
+                    d="M21,10h-8.35C11.83,7.67,9.61,6,7,6c-3.31,0-6,2.69-6,6s2.69,6,6,6c2.61,0,4.83-1.67,5.65-4H13l2,2l2-2l2,2l4-4.04L21,10z M7,15c-1.65,0-3-1.35-3-3c0-1.65,1.35-3,3-3s3,1.35,3,3C10,13.65,8.65,15,7,15z"
+                  />
+                </g>
+              </svg>
+              {{ props.row.accountPassword }}
+            </p>
+            <p
+              @click="$Utility.copyToClipboard(props.row.accountPlatform)"
+              class="cursor-pointer mt-2 mr-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:mr-2"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -66,7 +96,10 @@
               </svg>
               {{ props.row.accountPlatform }}
             </p>
-            <p class="mt-2 mr-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:mr-2">
+            <p
+              @click="$Utility.copyToClipboard(props.row.customerName)"
+              class="cursor-pointer mt-2 mr-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:mr-2"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -121,6 +154,35 @@
             />
           </svg>
           <span class="ml-2 sm:hidden">Cancel</span>
+        </button>
+        <button
+          type="button"
+          class="mt-5 sm:mt-0 ml-0 sm:ml-2 inline-flex justify-center items-center rounded-md border border-gray-300 bg-white p-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+          @click="
+            copyOrder(
+              props.row.code,
+              props.row.productTitle,
+              props.row.accountUsername,
+              props.row.accountPassword,
+              props.row.accountName,
+              props.row.accountPlatform,
+              props.row.customerName
+            )
+          "
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 0 24 24"
+            width="24px"
+            fill="#9CA3AF"
+          >
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
+            />
+          </svg>
+          <span class="ml-2 sm:hidden">Copy</span>
         </button>
       </div>
     </template>
@@ -254,6 +316,32 @@ export default defineComponent({
       orderId.value = id;
     }
 
+    function copyOrder(
+      orderNumber: string,
+      orderTitle: string,
+      email: string,
+      password: string,
+      name: string,
+      platform: string,
+      shop: string
+    ) {
+      let str =
+        orderNumber +
+        "\n" +
+        orderTitle +
+        "\n" +
+        email +
+        "\n" +
+        password +
+        "\n" +
+        name +
+        "\n" +
+        platform +
+        "\n" +
+        shop;
+      Utility.copyToClipboard(str);
+    }
+
     onMounted(async () => {
       orderService.currentInProgressRequestProp.setToFirstPage();
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
@@ -274,6 +362,7 @@ export default defineComponent({
       orderId,
       isOpenUpload,
       onOpenDoneModal,
+      copyOrder,
     };
   },
 });

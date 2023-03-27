@@ -1,54 +1,74 @@
 <template>
-  <q-card class="sign-container">
-    <q-card-section class="logo-holder">
-      <div class="custom-lp-container w-100">
-        <q-img class="logo" src="../../assets/img/Logo.svg"></q-img>
-        <h5 style="margin-bottom: 0" class="sign-title">
-          {{ $t(L.GENERAL.FORGET_PASSWORD) }}
-        </h5>
-      </div>
-    </q-card-section>
-    <div class="top-radius"></div>
-
-    <q-card-section class="sign-body">
-      <div class="custom-lp-container w-100">
-        <div class="row">
-          <div class="col-12 q-mt-md">
-            <label class="q-mb-sm label-input text-primary bold">{{
-              $t($L.MESSAGE.FORGET_MSG)
-            }}</label>
-            <q-input
-              class="q-mt-sm"
-              outlined
-              v-model="model.email"
-              autofocus
-              :placeholder="$t($L.MODEL.USER.EMAIL)"
-              @blur="v$.email.$touch"
-              :error="v$.email.$error"
-              :error-message="v$.email.$errors.map((x) => x.$message).join(',')"
+  <div class="container mx-auto">
+    <section class="h-screen">
+      <div class="container px-6 py-24 h-full">
+        <div class="g-6 flex flex-col items-center justify-center">
+          <div class="mb-16">
+            <img
+              src="../../assets/img/Logo.svg"
+              class="w-16 h-16 mx-auto"
+              alt="GameTopUp"
             />
           </div>
-          <div class="col-12 q-mt-md">
-            <span v-if="msg != ''" class="text-secondary">{{ msg }}</span>
-          </div>
+          <div class="max-w-[600px] w-full">
+            <form>
+              <!-- Email input -->
+              <label for="" class="block mb-2">{{ $t($L.MESSAGE.FORGET_MSG) }}</label>
+              <div class="relative mb-6" data-te-input-wrapper-init>
+                <input
+                  type="text"
+                  :class="[
+                    'block w-full rounded-md border-gray-300 py-4 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm sm:leading-4',
+                    v$.email.$error ? '!border-red-500 focus:ring-red-500' : '',
+                  ]"
+                  v-model="model.email"
+                  @blur="v$.username.$touch"
+                  :placeholder="$t($L.MODEL.USER.EMAIL)"
+                />
+                <p
+                  v-for="error of v$.email.$errors"
+                  :key="error.$uid"
+                  class="text-red-500 flex mt-2"
+                >
+                  <svg
+                    class="h-5 w-5 text-red-500 mr-2"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                  {{ error.$message }}
+                </p>
+              </div>
+              <div class="col-12 q-mt-md">
+                <span v-if="msg != ''" class="text-secondary">{{ msg }}</span>
+              </div>
 
-          <div class="col-12 q-mt-md">
-            <q-btn
-              :label="$t($L.ACTIONS.SEND)"
-              color="secondary w-100"
-              @click="onSubmit"
-              no-caps
-            />
-          </div>
-          <div class="col-12 q-mt-md text-center">
-            <router-link to="/login"
-              ><span class="">{{ $t($L.GENERAL.BACK_LOGIN) }}</span>
-            </router-link>
+              <!-- Submit button -->
+              <button
+                class="inline-block w-full rounded bg-primary px-7 pt-3 pb-2.5 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"
+                data-te-ripple-init
+                data-te-ripple-color="light"
+                @click="onSubmit"
+              >
+                {{ $t($L.ACTIONS.SEND) }}
+              </button>
+              <div class="col-12 q-mt-md text-center">
+                <router-link to="/login"
+                  ><span class="">{{ $t($L.GENERAL.BACK_LOGIN) }}</span>
+                </router-link>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-    </q-card-section>
-  </q-card>
+    </section>
+  </div>
 </template>
 
 <script lang="ts">

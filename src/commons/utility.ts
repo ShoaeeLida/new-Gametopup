@@ -1,5 +1,5 @@
 import { GROUP_POLICY, LOCAL_STORAGE } from "./";
-import { Notify, LocalStorage } from "quasar";
+import { Notify, LocalStorage, copyToClipboard } from "quasar";
 import { MessageTypeEnum } from "./enumerations";
 import { $t } from "src/boot/i18n";
 import { GroupPolicyVm } from "src/core/viewModels";
@@ -74,5 +74,15 @@ export class Utility {
 
   static showLoadingGlobally(show: boolean) {
     LocalStorage.set(LOCAL_STORAGE.SHOW_LOADING, show);
+  }
+
+  static copyToClipboard(text: string) {
+    copyToClipboard(text)
+      .then(() => {
+        this.showNotification(MessageTypeEnum.Success, "Copied!");
+      })
+      .catch(() => {
+        this.showNotification(MessageTypeEnum.Danger, "An error has occurred!");
+      });
   }
 }

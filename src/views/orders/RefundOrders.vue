@@ -15,7 +15,10 @@
       >
         <div class="flex-1 mr-0 sm:mr-5">
           <div class="flex items-center justify-between">
-            <p class="truncate text-sm font-medium text-indigo-600">
+            <p
+              @click="$Utility.copyToClipboard(props.row.productTitle)"
+              class="cursor-pointer truncate text-sm font-medium text-indigo-600"
+            >
               {{ props.row.productTitle }}
             </p>
           </div>
@@ -35,7 +38,10 @@
               </svg>
               {{ props.row.createdDateTime }}
             </p>
-            <p class="mt-2 mr-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:mr-2">
+            <p
+              @click="$Utility.copyToClipboard(props.row.accountUsername)"
+              class="cursor-pointer mt-2 mr-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:mr-2"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -51,7 +57,10 @@
               </svg>
               {{ props.row.accountUsername }}
             </p>
-            <p class="mt-2 mr-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:mr-2">
+            <p
+              @click="$Utility.copyToClipboard(props.row.accountPlatform)"
+              class="cursor-pointer mt-2 mr-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:mr-2"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -66,7 +75,10 @@
               </svg>
               {{ props.row.accountPlatform }}
             </p>
-            <p class="mt-2 mr-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:mr-2">
+            <p
+              @click="$Utility.copyToClipboard(props.row.customerName)"
+              class="cursor-pointer mt-2 mr-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:mr-2"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -86,6 +98,35 @@
             </p>
           </div>
         </div>
+        <button
+          type="button"
+          class="mt-5 sm:mt-0 ml-0 sm:ml-2 inline-flex justify-center items-center rounded-md border border-gray-300 bg-white p-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+          @click="
+            copyOrder(
+              props.row.code,
+              props.row.productTitle,
+              props.row.accountUsername,
+              props.row.accountPassword,
+              props.row.accountName,
+              props.row.accountPlatform,
+              props.row.customerName
+            )
+          "
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 0 24 24"
+            width="24px"
+            fill="#9CA3AF"
+          >
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
+            />
+          </svg>
+          <span class="ml-2 sm:hidden">Copy</span>
+        </button>
       </div>
     </template>
   </q-table>
@@ -185,6 +226,32 @@ export default defineComponent({
       await fillDataTable(requestProp);
     }
 
+    function copyOrder(
+      orderNumber: string,
+      orderTitle: string,
+      email: string,
+      password: string,
+      name: string,
+      platform: string,
+      shop: string
+    ) {
+      let str =
+        orderNumber +
+        "\n" +
+        orderTitle +
+        "\n" +
+        email +
+        "\n" +
+        password +
+        "\n" +
+        name +
+        "\n" +
+        platform +
+        "\n" +
+        shop;
+      Utility.copyToClipboard(str);
+    }
+
     onMounted(async () => {
       orderService.currentRefundRequestProp.setToFirstPage();
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
@@ -198,6 +265,7 @@ export default defineComponent({
       takeOrder,
       openSearchModal,
       doFilter,
+      copyOrder,
     };
   },
 });
