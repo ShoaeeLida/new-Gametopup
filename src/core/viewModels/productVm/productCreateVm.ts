@@ -9,6 +9,7 @@ export class ProductCreateVm  {
   categoryName: string = "";
   price: string = "0";
   productCategoryId:string = "";
+  code: string = "";
 
   v$(ref: Ref<ProductCreateVm>) {
     const rules = {
@@ -22,6 +23,9 @@ export class ProductCreateVm  {
       productCategoryId: {
         required: helpers.withMessage($t(L.VALIDATION.REQUIRED), required),
       },
+      code:{
+        required: helpers.withMessage($t(L.VALIDATION.REQUIRED), required),
+      }
     };
     return useVuelidate(rules, ref);
   }

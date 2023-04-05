@@ -4,7 +4,7 @@ import {
   ProductVm,
   ProductCreateVm,
   ProductEditVm,
-  ProductCategoryVm,
+ // ProductCategoryVm,
   DdlVm,
   DropDownVm,
 } from "../viewModels";
@@ -34,20 +34,32 @@ export class ProductService {
 
   async tableAsync(
     requestProp: RequestProp
-  ): Promise<BaseResponse<Array<ProductCategoryVm>>> {
+  ): Promise<BaseResponse<Array<ProductVm>>> {
     const url = `${baseEndpoint}/List`;
     this.currentRequestProp.setData(requestProp);
     const table = TableVm.toTable(this.currentRequestProp);
     const jsonData = instanceToPlain(table);
-    const response = await axios.post<BaseResponse<Array<ProductCategoryVm>>>(
+    const response = await axios.post<BaseResponse<Array<ProductVm>>>(
       url,
       jsonData
     );
     const baseResponse = response.data;
     if (baseResponse.status == MessageTypeEnum.Success) {
-      baseResponse.data = plainToInstance(ProductCategoryVm, baseResponse.data);
+      baseResponse.data = plainToInstance(ProductVm, baseResponse.data);
     }
     return baseResponse;
+  }
+
+  async listAsync(): Promise<Array<ProductVm>> {
+
+    const url = `${baseEndpoint}/List`;
+    const response = await axios.post<BaseResponse<Array<ProductVm>>>(url);
+    const baseResponse = response.data;
+    let result: Array<ProductVm> = [];
+    if (baseResponse.status == MessageTypeEnum.Success) {
+      result = plainToInstance(ProductVm, baseResponse.data);
+    }
+    return result;
   }
 
   async addAsync(model: ProductCreateVm): Promise<BaseResponse<ProductVm>> {

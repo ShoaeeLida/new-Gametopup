@@ -154,8 +154,6 @@ import { useRouter } from "vue-router";
 import { LocalStorage, useQuasar } from "quasar";
 import jwt_decode from "jwt-decode";
 
-//import { $t } from "src/boot/i18n";
-
 export default defineComponent({
   setup() {
     const model = ref(new LoginVm());

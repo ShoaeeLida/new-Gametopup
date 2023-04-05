@@ -11,10 +11,16 @@
   >
     <template v-slot:item="props">
       <div
-        class="flex px-4 py-4 sm:px-6 hover:bg-gray-50 place-items-top flex-col sm:flex-row border-b border-gray-200 w-full"
+        class="flex px-4 py-4 sm:px-6 sm:items-center hover:bg-gray-50 place-items-top flex-col sm:flex-row border-b border-gray-200 w-full"
       >
         <div class="flex-1 mr-0 sm:mr-5">
-          <div class="flex items-center justify-between">
+          <div class="flex items-center flex-wrap">
+            <p
+              @click="$Utility.copyToClipboard(props.row.code)"
+              class="cursor-pointer truncate text-sm font-medium mr-5 text-gray-500"
+            >
+              #{{ props.row.code }}
+            </p>
             <p
               @click="$Utility.copyToClipboard(props.row.productTitle)"
               class="cursor-pointer truncate text-sm font-medium text-indigo-600"
@@ -22,7 +28,9 @@
               {{ props.row.productTitle }}
             </p>
           </div>
-          <div class="mt-2 flex justify-between flex-wrap">
+          <div
+            class="mt-2 flex justify-between flex-wrap grid gap-2 grid-cols-1 xs:grid-cols-2 sm:grid-cols-3"
+          >
             <p class="mt-2 mr-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:mr-2">
               <svg
                 class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
@@ -56,6 +64,25 @@
                 />
               </svg>
               {{ props.row.accountUsername }}
+            </p>
+            <p
+              @click="$Utility.copyToClipboard(props.row.accountName)"
+              class="cursor-pointer mt-2 mr-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:mr-2"
+            >
+              <svg
+                class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 0 24 24"
+                width="24px"
+                fill="currentColor"
+              >
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path
+                  d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                />
+              </svg>
+              {{ props.row.accountName }}
             </p>
             <p
               @click="$Utility.copyToClipboard(props.row.accountPlatform)"
@@ -95,6 +122,21 @@
                 />
               </svg>
               {{ props.row.customerName }}
+            </p>
+            <p class="mt-2 mr-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:mr-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
+                viewBox="0 0 24 24"
+                width="24px"
+                fill="currentColor"
+              >
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path
+                  d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"
+                />
+              </svg>
+              ${{ props.row.price }}
             </p>
           </div>
         </div>

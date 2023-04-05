@@ -9,7 +9,12 @@ export class OrderVm {
   accountPassword: string = "";
   accountName: string = "";
   accountPlatform: string = "";
-  customerName:string = "";
+  customerName: string = "";
+
+  @Transform(({ value }) => {
+    return parseFloat(value).toFixed(2);
+  })
+  price: string = "0";
 
   @Transform(({ value }) => {
     try {

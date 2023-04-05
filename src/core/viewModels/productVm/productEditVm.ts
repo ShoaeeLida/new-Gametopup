@@ -10,6 +10,7 @@ export class ProductEditVm  {
   categoryName: string = "";
   price: string = "0";
   productCategoryId:string = "";
+  code: string = "";
 
     v$(ref: Ref<ProductEditVm>) {
         const rules = {
@@ -23,6 +24,9 @@ export class ProductEditVm  {
           productCategoryId: {
             required: helpers.withMessage($t(L.VALIDATION.REQUIRED), required),
           },
+          code:{
+            required: helpers.withMessage($t(L.VALIDATION.REQUIRED), required),
+          }
         };
         return useVuelidate(rules, ref);
       }
