@@ -17,7 +17,7 @@
         </div>
       </div>
       <div class="mt-8 flow-root">
-        <div class="overflow-hidden bg-white shadow mt-5 sm:rounded-md">
+        <div class="mt-5 overflow-hidden bg-white shadow sm:rounded-md">
           <div class="overflow-x-auto">
             <div class="inline-block min-w-full align-middle">
               <!-- ***************************** -->
@@ -115,7 +115,7 @@
                                       viewBox="0 0 24 24"
                                       stroke-width="1.5"
                                       stroke="currentColor"
-                                      class="w-6 h-6"
+                                      class="h-6 w-6"
                                     >
                                       <path
                                         stroke-linecap="round"
@@ -131,7 +131,7 @@
                                       viewBox="0 0 24 24"
                                       stroke-width="1.5"
                                       stroke="currentColor"
-                                      class="w-6 h-6"
+                                      class="h-6 w-6"
                                     >
                                       <path
                                         stroke-linecap="round"

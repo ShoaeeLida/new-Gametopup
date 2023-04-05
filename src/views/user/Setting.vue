@@ -1,14 +1,14 @@
 <template>
   <div class="mx-auto max-w-6xl">
     <div class="px-6 lg:px-8">
-      <div class="border-b border-gray-200 mb-5">
+      <div class="mb-5 border-b border-gray-200">
         <nav class="-mb-px flex space-x-8" aria-label="Tabs">
           <a
             href="#"
-            class="border-indigo-500 text-indigo-500 group inline-flex items-center py-4 px-1 border-b-2 font-medium text-sm"
+            class="group inline-flex items-center border-b-2 border-indigo-500 py-4 px-1 text-sm font-medium text-indigo-500"
           >
             <svg
-              class="text-indigo-500 -ml-0.5 mr-2 h-5 w-5"
+              class="-ml-0.5 mr-2 h-5 w-5 text-indigo-500"
               viewBox="0 0 20 20"
               fill="currentColor"
               aria-hidden="true"
@@ -21,11 +21,11 @@
           </a>
           <a
             href="#"
-            class="border-transparent text-gray-600 hover:text-gray-700 hover:border-gray-300 group inline-flex items-center py-4 px-1 border-b-2 font-medium text-sm"
+            class="group inline-flex items-center border-b-2 border-transparent py-4 px-1 text-sm font-medium text-gray-600 hover:border-gray-300 hover:text-gray-700"
             aria-current="page"
           >
             <svg
-              class="text-gray-500 hover:text-gray-600 -ml-0.5 mr-2 h-5 w-5"
+              class="-ml-0.5 mr-2 h-5 w-5 text-gray-500 hover:text-gray-600"
               viewBox="0 0 20 20"
               fill="currentColor"
               aria-hidden="true"
@@ -38,14 +38,14 @@
           </a>
           <a
             href="#"
-            class="border-transparent text-gray-600 hover:text-gray-700 hover:border-gray-300 group inline-flex items-center py-4 px-1 border-b-2 font-medium text-sm"
+            class="group inline-flex items-center border-b-2 border-transparent py-4 px-1 text-sm font-medium text-gray-600 hover:border-gray-300 hover:text-gray-700"
             aria-current="page"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              class="text-gray-500 hover:text-gray-600 -ml-0.5 mr-2 h-5 w-5"
+              class="-ml-0.5 mr-2 h-5 w-5 text-gray-500 hover:text-gray-600"
             >
               <path
                 fill-rule="evenodd"

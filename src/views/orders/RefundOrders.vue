@@ -11,13 +11,13 @@
   >
     <template v-slot:item="props">
       <div
-        class="flex px-4 py-4 sm:px-6 sm:items-center hover:bg-gray-50 place-items-top flex-col sm:flex-row border-b border-gray-200 w-full"
+        class="place-items-top flex w-full flex-col border-b border-gray-200 px-4 py-4 hover:bg-gray-50 sm:flex-row sm:items-center sm:px-6"
       >
-        <div class="flex-1 mr-0 sm:mr-5">
-          <div class="flex items-center flex-wrap">
+        <div class="mr-0 flex-1 sm:mr-5">
+          <div class="flex flex-wrap items-center">
             <p
               @click="$Utility.copyToClipboard(props.row.code)"
-              class="cursor-pointer truncate text-sm font-medium mr-5 text-gray-500"
+              class="mr-5 cursor-pointer truncate text-sm font-medium text-gray-500"
             >
               #{{ props.row.code }}
             </p>
@@ -29,7 +29,7 @@
             </p>
           </div>
           <div
-            class="mt-2 flex justify-between flex-wrap grid gap-2 grid-cols-1 xs:grid-cols-2 sm:grid-cols-3"
+            class="xs:grid-cols-2 mt-2 flex grid grid-cols-1 flex-wrap justify-between gap-2 sm:grid-cols-3"
           >
             <p class="mt-2 mr-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:mr-2">
               <svg
@@ -48,7 +48,7 @@
             </p>
             <p
               @click="$Utility.copyToClipboard(props.row.accountUsername)"
-              class="cursor-pointer mt-2 mr-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:mr-2"
+              class="mt-2 mr-2 flex cursor-pointer items-center text-sm text-gray-500 sm:mt-0 sm:mr-2"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +67,7 @@
             </p>
             <p
               @click="$Utility.copyToClipboard(props.row.accountName)"
-              class="cursor-pointer mt-2 mr-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:mr-2"
+              class="mt-2 mr-2 flex cursor-pointer items-center text-sm text-gray-500 sm:mt-0 sm:mr-2"
             >
               <svg
                 class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
@@ -86,7 +86,7 @@
             </p>
             <p
               @click="$Utility.copyToClipboard(props.row.accountPlatform)"
-              class="cursor-pointer mt-2 mr-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:mr-2"
+              class="mt-2 mr-2 flex cursor-pointer items-center text-sm text-gray-500 sm:mt-0 sm:mr-2"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +104,7 @@
             </p>
             <p
               @click="$Utility.copyToClipboard(props.row.customerName)"
-              class="cursor-pointer mt-2 mr-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:mr-2"
+              class="mt-2 mr-2 flex cursor-pointer items-center text-sm text-gray-500 sm:mt-0 sm:mr-2"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -142,7 +142,7 @@
         </div>
         <button
           type="button"
-          class="mx-2 mt-5 sm:mt-0 ml-0 sm:ml-2 inline-flex justify-center items-center rounded-md border border-gray-300 bg-white p-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+          class="mx-2 mt-5 ml-0 inline-flex items-center justify-center rounded-md border border-gray-300 bg-white p-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 sm:mt-0 sm:ml-2"
           @click="
             copyOrder(
               props.row.code,

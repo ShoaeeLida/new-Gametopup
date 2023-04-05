@@ -1,26 +1,26 @@
 <template>
-  <div id="slideOver-container" :class="['w-full h-full fixed inset-0 ', invisible]">
+  <div id="slideOver-container" :class="['fixed inset-0 h-full w-full ', invisible]">
     <div
       @click="toggleSlideOver"
       id="slideOver-bg"
       :class="[
-        'w-full h-full duration-500 ease-out transition-all inset-0 absolute bg-gray-900 ',
+        'absolute inset-0 h-full w-full bg-gray-900 transition-all duration-500 ease-out ',
         opacity,
       ]"
     ></div>
     <div
       id="slideOver"
       :class="[
-        'w-96 bg-white h-full absolute right-0 duration-300 ease-out transition-all overflow-y-auto',
+        'absolute right-0 h-full w-96 overflow-y-auto bg-white transition-all duration-300 ease-out',
         translateX,
       ]"
     >
       <div
         @click="toggleSlideOver"
-        class="absolute cursor-pointer text-gray-600 top-0 w-8 h-8 flex items-center justify-center right-0 mt-5 mr-5"
+        class="absolute top-0 right-0 mt-5 mr-5 flex h-8 w-8 cursor-pointer items-center justify-center text-gray-600"
       >
         <svg
-          class="w-6 h-6"
+          class="h-6 w-6"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -53,10 +53,10 @@
             <p
               v-for="error of v$.productCategoryId.$errors"
               :key="error.$uid"
-              class="text-red-500 flex mt-2"
+              class="mt-2 flex text-red-500"
             >
               <svg
-                class="h-5 w-5 text-red-500 mr-2"
+                class="mr-2 h-5 w-5 text-red-500"
                 viewBox="0 0 20 20"
                 fill="currentColor"
                 aria-hidden="true"
@@ -87,10 +87,10 @@
             <p
               v-for="error of v$.title.$errors"
               :key="error.$uid"
-              class="text-red-500 flex mt-2"
+              class="mt-2 flex text-red-500"
             >
               <svg
-                class="h-5 w-5 text-red-500 mr-2"
+                class="mr-2 h-5 w-5 text-red-500"
                 viewBox="0 0 20 20"
                 fill="currentColor"
                 aria-hidden="true"
@@ -121,10 +121,10 @@
             <p
               v-for="error of v$.code.$errors"
               :key="error.$uid"
-              class="text-red-500 flex mt-2"
+              class="mt-2 flex text-red-500"
             >
               <svg
-                class="h-5 w-5 text-red-500 mr-2"
+                class="mr-2 h-5 w-5 text-red-500"
                 viewBox="0 0 20 20"
                 fill="currentColor"
                 aria-hidden="true"
@@ -154,10 +154,10 @@
             <p
               v-for="error of v$.price.$errors"
               :key="error.$uid"
-              class="text-red-500 flex mt-2"
+              class="mt-2 flex text-red-500"
             >
               <svg
-                class="h-5 w-5 text-red-500 mr-2"
+                class="mr-2 h-5 w-5 text-red-500"
                 viewBox="0 0 20 20"
                 fill="currentColor"
                 aria-hidden="true"
@@ -171,16 +171,16 @@
               {{ error.$message }}
             </p>
           </div>
-          <div class="row mt-7 justify-right">
+          <div class="row justify-right mt-7">
             <button
               @click="onReset"
-              class="w-20 mx-2 inline-flex items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+              class="mx-2 inline-flex w-20 items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
             >
               {{ $t($L.ACTIONS.CLEAR) }}
             </button>
             <button
               @click="onSubmit"
-              class="w-20 mx-2 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2"
+              class="mx-2 inline-flex w-20 justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2"
             >
               {{ $t($L.ACTIONS.ADD) }}
             </button>

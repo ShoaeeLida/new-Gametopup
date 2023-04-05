@@ -10,7 +10,8 @@
       <q-card-section class="q-mt-lg">
         <div class="row no-wrap items-center">
           <div class="text-h6">
-            <q-icon name="search" size="md"></q-icon> {{ $t($L.GENERAL.SEARCH) }}
+            <q-icon name="search" size="md"></q-icon>
+            {{ $t($L.GENERAL.SEARCH) }}
             {{ $t($L.GENERAL.ORDERS) }}
           </div>
           <q-space />

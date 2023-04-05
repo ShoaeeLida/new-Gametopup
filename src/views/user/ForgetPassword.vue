@@ -1,19 +1,21 @@
 <template>
   <div class="container mx-auto">
     <section class="h-screen">
-      <div class="container px-6 py-24 h-full">
+      <div class="container h-full px-6 py-24">
         <div class="g-6 flex flex-col items-center justify-center">
           <div class="mb-16">
             <img
               src="../../assets/img/Logo.svg"
-              class="w-16 h-16 mx-auto"
+              class="mx-auto h-16 w-16"
               alt="GameTopUp"
             />
           </div>
-          <div class="max-w-[600px] w-full">
+          <div class="w-full max-w-[600px]">
             <form>
               <!-- Email input -->
-              <label for="" class="block mb-2">{{ $t($L.MESSAGE.FORGET_MSG) }}</label>
+              <label for="" class="mb-2 block">{{
+                $t($L.MESSAGE.FORGET_MSG)
+              }}</label>
               <div class="relative mb-6" data-te-input-wrapper-init>
                 <input
                   type="text"
@@ -28,10 +30,10 @@
                 <p
                   v-for="error of v$.email.$errors"
                   :key="error.$uid"
-                  class="text-red-500 flex mt-2"
+                  class="mt-2 flex text-red-500"
                 >
                   <svg
-                    class="h-5 w-5 text-red-500 mr-2"
+                    class="mr-2 h-5 w-5 text-red-500"
                     viewBox="0 0 20 20"
                     fill="currentColor"
                     aria-hidden="true"
@@ -51,7 +53,7 @@
 
               <!-- Submit button -->
               <button
-                class="inline-block w-full rounded bg-primary px-7 pt-3 pb-2.5 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"
+                class="bg-primary hover:bg-primary-600 focus:bg-primary-600 active:bg-primary-700 inline-block w-full rounded px-7 pt-3 pb-2.5 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"
                 data-te-ripple-init
                 data-te-ripple-color="light"
                 @click="onSubmit"

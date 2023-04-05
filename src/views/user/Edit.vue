@@ -9,7 +9,9 @@
         <q-card-section class="q-mt-lg">
           <div class="row">
             <div class="col-12 q-mt-md">
-              <label class="q-mb-sm label-input">{{ $t($L.MODEL.USER.EMAIL) }}</label>
+              <label class="q-mb-sm label-input">{{
+                $t($L.MODEL.USER.EMAIL)
+              }}</label>
               <q-input
                 outlined
                 v-model="editModel.email"
@@ -17,7 +19,9 @@
                 :placeholder="$t($L.MODEL.USER.EMAIL)"
                 @blur="v$.email.$touch"
                 :error="v$.email.$error"
-                :error-message="v$.email.$errors.map((x) => x.$message).join(',')"
+                :error-message="
+                  v$.email.$errors.map((x) => x.$message).join(',')
+                "
               />
             </div>
 
@@ -46,7 +50,9 @@
               />
             </div>
             <div class="col-12 q-mt-md">
-              <label class="q-mb-sm label-input">{{ $t($L.MODEL.USER.LAST_NAME) }}</label>
+              <label class="q-mb-sm label-input">{{
+                $t($L.MODEL.USER.LAST_NAME)
+              }}</label>
               <q-input
                 outlined
                 v-model="editModel.lastName"
@@ -63,7 +69,9 @@
                 :label="$t($L.GENERAL.CHOOSE_ROLE)"
                 @blur="v$.roles.$touch"
                 :error="v$.roles.$error"
-                :error-message="v$.roles.$errors.map((x) => x.$message).join(',')"
+                :error-message="
+                  v$.roles.$errors.map((x) => x.$message).join(',')
+                "
               />
             </div>
           </div>
@@ -95,7 +103,9 @@ export default defineComponent({
   },
   emits: ["update:modelValue", "onRegister"],
   setup(props, { emit }) {
-    const userManagerService = container.get<UserManagerService>(cid.UserManagerService);
+    const userManagerService = container.get<UserManagerService>(
+      cid.UserManagerService
+    );
     //const model = ref(new UserVm());
     const editModel = ref(new UserEditVm());
     const v$ = editModel.value.v$(editModel);

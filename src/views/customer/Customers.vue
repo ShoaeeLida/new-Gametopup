@@ -5,8 +5,8 @@
         <div class="sm:flex-auto">
           <h1 class="text-xl font-semibold text-gray-900">Customers</h1>
           <p class="text-sm text-gray-700">
-            A list of all the customers in your panel including their name, title, email
-            and shop.
+            A list of all the customers in your panel including their name,
+            title, email and shop.
           </p>
         </div>
         <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="mt-8 flow-root">
-        <div class="overflow-hidden bg-white shadow mt-5 sm:rounded-md">
+        <div class="mt-5 overflow-hidden bg-white shadow sm:rounded-md">
           <div class="overflow-x-auto">
             <!-- <div class="inline-block min-w-full py-2 align-middle"> -->
             <q-table
@@ -76,14 +76,18 @@
               </template>
               <template v-slot:body-cell-Operations="props">
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                  <button class="mr-2" title="Settings" @click="openEdit(props.row.id)">
+                  <button
+                    class="mr-2"
+                    title="Settings"
+                    @click="openEdit(props.row.id)"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke-width="1.5"
                       stroke="currentColor"
-                      class="w-6 h-6"
+                      class="h-6 w-6"
                     >
                       <path
                         stroke-linecap="round"
@@ -104,7 +108,7 @@
                       viewBox="0 0 24 24"
                       stroke-width="1.5"
                       stroke="currentColor"
-                      class="w-6 h-6"
+                      class="h-6 w-6"
                     >
                       <path
                         stroke-linecap="round"
@@ -120,7 +124,7 @@
                       viewBox="0 0 24 24"
                       stroke-width="1.5"
                       stroke="currentColor"
-                      class="w-6 h-6"
+                      class="h-6 w-6"
                     >
                       <path
                         stroke-linecap="round"

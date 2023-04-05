@@ -7,7 +7,7 @@
           <p class="mt-1 text-sm text-gray-600">
             You can request to payout your available balance.
           </p>
-          <div class="rounded-md bg-indigo-50 p-4 border border-indigo-400 mt-5">
+          <div class="mt-5 rounded-md border border-indigo-400 bg-indigo-50 p-4">
             <div class="flex">
               <div class="flex-shrink-0">
                 <svg
@@ -44,7 +44,7 @@
 
               <div class="mt-4 grid grid-cols-2 gap-y-6 gap-x-4">
                 <label
-                  class="relative flex cursor-pointer rounded-lg border border-indigo-500 ring-1 ring-indigo-500 bg-white p-4 shadow-sm focus:outline-none"
+                  class="relative flex cursor-pointer rounded-lg border border-indigo-500 bg-white p-4 shadow-sm ring-1 ring-indigo-500 focus:outline-none"
                 >
                   <span class="flex flex-1">
                     <span class="flex flex-col">
@@ -133,16 +133,16 @@
                 <template v-for="(item, index) in paymentMethod.items" :key="index">
                   <label
                     :for="'rb' + index"
-                    class="border z-10 rounded-md mb-2 relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-2 focus:outline-none dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+                    class="relative z-10 mb-2 flex cursor-pointer flex-col rounded-md border border p-4 hover:bg-gray-100 hover:text-gray-600 focus:outline-none peer-checked:border-blue-600 peer-checked:text-blue-600 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:peer-checked:text-blue-500 md:grid md:grid-cols-2 md:pl-4 md:pr-6"
                   >
-                    <span class="flex flex-2 items-center text-sm">
+                    <span class="flex-2 flex items-center text-sm">
                       <input
                         :id="'rb' + index"
                         type="radio"
                         name="pricing-plan"
                         :value="item.value"
                         v-model="payoutModel.paymentMethod"
-                        class="peer h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500"
+                        class="peer h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
                         aria-labelledby="pricing-plans-0-label"
                         aria-describedby="pricing-plans-0-description-0 pricing-plans-0-description-1"
                       />
@@ -154,17 +154,17 @@
                     </span>
                     <span
                       id="pricing-plans-0-description-1"
-                      class="ml-6 pl-1 text-xs md:ml-0 md:pl-0 md:text-right text-indigo-700"
+                      class="ml-6 pl-1 text-xs text-indigo-700 md:ml-0 md:pl-0 md:text-right"
                       >{{ item.text }}</span
                     >
                   </label>
                   <p
                     v-for="error of v$.paymentMethod.$errors"
                     :key="error.$uid"
-                    class="text-red-500 flex mt-2"
+                    class="mt-2 flex text-red-500"
                   >
                     <svg
-                      class="h-5 w-5 text-red-500 mr-2"
+                      class="mr-2 h-5 w-5 text-red-500"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                       aria-hidden="true"
@@ -204,7 +204,7 @@
               </div>
             </fieldset>
             <fieldset>
-              <legend class="text-base mb-3 font-medium text-gray-900">
+              <legend class="mb-3 text-base font-medium text-gray-900">
                 Enter Wallet Address
               </legend>
               <div>
@@ -214,7 +214,7 @@
                     name="price"
                     id="price"
                     :class="[
-                      'block w-full rounded-md border-gray-300 pr-14 py-4 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm sm:leading-4',
+                      'block w-full rounded-md border-gray-300 py-4 pr-14 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm sm:leading-4',
                       v$.userWalletAddress.$error
                         ? '!border-red-500 focus:ring-red-500'
                         : '',
@@ -228,10 +228,10 @@
                 <p
                   v-for="error of v$.userWalletAddress.$errors"
                   :key="error.$uid"
-                  class="text-red-500 flex mt-2"
+                  class="mt-2 flex text-red-500"
                 >
                   <svg
-                    class="h-5 w-5 text-red-500 mr-2"
+                    class="mr-2 h-5 w-5 text-red-500"
                     viewBox="0 0 20 20"
                     fill="currentColor"
                     aria-hidden="true"
@@ -247,7 +247,7 @@
               </div>
             </fieldset>
             <fieldset>
-              <legend class="text-base mb-3 font-medium text-gray-900">
+              <legend class="mb-3 text-base font-medium text-gray-900">
                 Enter Amount
               </legend>
               <div>
@@ -257,7 +257,7 @@
                     name="price"
                     id="price"
                     :class="[
-                      'block w-full py-4 rounded-md border-gray-300 pr-14 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm',
+                      'block w-full rounded-md border-gray-300 py-4 pr-14 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm',
                       v$.amount.$error ? '!border-red-500 focus:ring-red-500' : '',
                     ]"
                     placeholder="0.00"
@@ -276,10 +276,10 @@
                 <p
                   v-for="error of v$.amount.$errors"
                   :key="error.$uid"
-                  class="text-red-500 flex mt-2"
+                  class="mt-2 flex text-red-500"
                 >
                   <svg
-                    class="h-5 w-5 text-red-500 mr-2"
+                    class="mr-2 h-5 w-5 text-red-500"
                     viewBox="0 0 20 20"
                     fill="currentColor"
                     aria-hidden="true"
@@ -295,10 +295,10 @@
               </div>
             </fieldset>
           </div>
-          <div class="bg-indigo-50 px-4 py-6 flex sm:px-6">
-            <div class="text-xs flex-1">
+          <div class="flex bg-indigo-50 px-4 py-6 sm:px-6">
+            <div class="flex-1 text-xs">
               You will receive
-              <span class="font-medium text-base block text-cyan-600"
+              <span class="block text-base font-medium text-cyan-600"
                 >{{ payoutModel.amount }} USDT</span
               >
             </div>

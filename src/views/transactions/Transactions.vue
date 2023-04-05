@@ -1,6 +1,8 @@
 <template>
   <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-    <div class="border-b border-gray-200 pb-5 sm:flex sm:items-center sm:justify-between">
+    <div
+      class="border-b border-gray-200 pb-5 sm:flex sm:items-center sm:justify-between"
+    >
       <h3 class="text-lg font-medium leading-6 text-gray-900">Transactions</h3>
       <div class="mt-3 sm:mt-0 sm:ml-4">
         <button
@@ -11,7 +13,7 @@
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
-            class="w-4 h-4 mr-1"
+            class="mr-1 h-4 w-4"
           >
             <path
               fill-rule="evenodd"
@@ -23,7 +25,7 @@
         </button>
       </div>
     </div>
-    <div class="overflow-hidden bg-white shadow mt-5 sm:rounded-md">
+    <div class="mt-5 overflow-hidden bg-white shadow sm:rounded-md">
       <div class="overflow-x-auto">
         <q-table
           class="min-w-full divide-y divide-gray-300 !text-left"
@@ -40,7 +42,7 @@
               <div class="flex items-center">
                 <div v-if="props.row.price > 0" class="h-10 w-10 flex-shrink-0">
                   <span
-                    class="h-10 w-10 rounded-full bg-green-100 flex justify-center place-items-center"
+                    class="flex h-10 w-10 place-items-center justify-center rounded-full bg-green-100"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +50,7 @@
                       viewBox="0 0 24 24"
                       stroke-width="2.5"
                       stroke="currentColor"
-                      class="w-4 h-4 stroke-green-800"
+                      class="h-4 w-4 stroke-green-800"
                     >
                       <path
                         stroke-linecap="round"
@@ -60,7 +62,7 @@
                 </div>
                 <div v-else class="h-10 w-10 flex-shrink-0">
                   <span
-                    class="h-10 w-10 rounded-full bg-red-100 flex justify-center place-items-center"
+                    class="flex h-10 w-10 place-items-center justify-center rounded-full bg-red-100"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -68,7 +70,7 @@
                       viewBox="0 0 24 24"
                       stroke-width="2.5"
                       stroke="currentColor"
-                      class="w-4 h-4 stroke-red-900"
+                      class="h-4 w-4 stroke-red-900"
                     >
                       <path
                         stroke-linecap="round"
@@ -84,7 +86,9 @@
                   </div>
                   <div class="text-gray-500">
                     Deposit from
-                    <span class="text-red-600">{{ props.row.customerName }}</span>
+                    <span class="text-red-600">{{
+                      props.row.customerName
+                    }}</span>
                   </div>
                 </div>
               </div>
@@ -127,7 +131,9 @@ import { FilterVm } from "src/core/viewModels/table";
 
 export default defineComponent({
   setup() {
-    const transactionService = container.get<TransactionService>(cid.TransactionService);
+    const transactionService = container.get<TransactionService>(
+      cid.TransactionService
+    );
     const quasarTable = ref(new QuasarTable());
     const fab1 = ref(false);
     const openSearchModal = ref(false);
@@ -177,7 +183,11 @@ export default defineComponent({
         }
       }
     }
-    async function doFilter(customerId: string, startDate: string, endDate: string) {
+    async function doFilter(
+      customerId: string,
+      startDate: string,
+      endDate: string
+    ) {
       if (
         (customerId == "" || customerId == null) &&
         (startDate == "" || startDate == null) &&

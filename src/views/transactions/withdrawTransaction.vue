@@ -53,7 +53,13 @@
     class="float-action"
     style="z-index: 11"
   >
-    <q-fab v-model="fab1" color="dark" icon="search" direction="left" @click="openSearch">
+    <q-fab
+      v-model="fab1"
+      color="dark"
+      icon="search"
+      direction="left"
+      @click="openSearch"
+    >
     </q-fab>
   </q-page-sticky>
   <q-page-sticky
@@ -87,11 +93,15 @@ import { FilterVm } from "src/core/viewModels/table";
 
 export default defineComponent({
   components: {
-    AppSearchModal: defineAsyncComponent(() => import("./SearchTransaction.vue")),
+    AppSearchModal: defineAsyncComponent(
+      () => import("./SearchTransaction.vue")
+    ),
     AppCreateModal: defineAsyncComponent(() => import("./Create.vue")),
   },
   setup() {
-    const transactionService = container.get<TransactionService>(cid.TransactionService);
+    const transactionService = container.get<TransactionService>(
+      cid.TransactionService
+    );
     const quasarTable = ref(new QuasarTable());
     const fab1 = ref(false);
     const fab2 = ref(false);
@@ -154,7 +164,11 @@ export default defineComponent({
         }
       }
     }
-    async function doFilter(customerId: string, startDate: string, endDate: string) {
+    async function doFilter(
+      customerId: string,
+      startDate: string,
+      endDate: string
+    ) {
       if (
         (customerId == "" || customerId == null) &&
         (startDate == "" || startDate == null) &&

@@ -1,26 +1,26 @@
 <template>
-  <div id="slideOver-container" :class="['w-full h-full fixed inset-0', invisible]">
+  <div id="slideOver-container" :class="['fixed inset-0 h-full w-full', invisible]">
     <div
       @click="toggleSlideOver"
       id="slideOver-bg"
       :class="[
-        'w-full h-full duration-500 ease-out transition-all inset-0 absolute bg-gray-900 ',
+        'absolute inset-0 h-full w-full bg-gray-900 transition-all duration-500 ease-out ',
         opacity,
       ]"
     ></div>
     <div
       id="slideOver"
       :class="[
-        'w-96 bg-white h-full absolute right-0 duration-300 ease-out transition-all overflow-y-auto',
+        'absolute right-0 h-full w-96 overflow-y-auto bg-white transition-all duration-300 ease-out',
         translateX,
       ]"
     >
       <div
         @click="toggleSlideOver"
-        class="absolute cursor-pointer text-gray-600 top-0 w-8 h-8 flex items-center justify-center right-0 mt-5 mr-5"
+        class="absolute top-0 right-0 mt-5 mr-5 flex h-8 w-8 cursor-pointer items-center justify-center text-gray-600"
       >
         <svg
-          class="w-6 h-6"
+          class="h-6 w-6"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -62,7 +62,7 @@
         </div>
       </div>
       <div
-        class="relative w-full bottom-0 right-0 w-full flex items-center justify-center"
+        class="relative bottom-0 right-0 flex w-full w-full items-center justify-center"
       >
         <q-btn
           color="secondary"

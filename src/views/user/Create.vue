@@ -16,7 +16,9 @@
         <q-card-section class="q-mt-lg">
           <div class="row">
             <div class="col-12 q-mt-md">
-              <label class="q-mb-sm label-input">{{ $t($L.MODEL.USER.EMAIL) }}</label>
+              <label class="q-mb-sm label-input">{{
+                $t($L.MODEL.USER.EMAIL)
+              }}</label>
               <q-input
                 outlined
                 v-model="createModel.email"
@@ -24,7 +26,9 @@
                 :placeholder="$t($L.MODEL.USER.EMAIL)"
                 @blur="v$.email.$touch"
                 :error="v$.email.$error"
-                :error-message="v$.email.$errors.map((x) => x.$message).join(',')"
+                :error-message="
+                  v$.email.$errors.map((x) => x.$message).join(',')
+                "
               />
             </div>
             <!-- <div class="col-12 q-mt-md">
@@ -40,7 +44,9 @@
               />
             </div> -->
             <div class="col-12 q-mt-md">
-              <label class="q-mb-sm label-input">{{ $t($L.MODEL.USER.PASSWORD) }}</label>
+              <label class="q-mb-sm label-input">{{
+                $t($L.MODEL.USER.PASSWORD)
+              }}</label>
               <q-input
                 outlined
                 v-model="createModel.password"
@@ -49,7 +55,9 @@
                 :placeholder="$t($L.MODEL.USER.PASSWORD)"
                 @blur="v$.password.$touch"
                 :error="v$.password.$error"
-                :error-message="v$.password.$errors.map((x) => x.$message).join(',')"
+                :error-message="
+                  v$.password.$errors.map((x) => x.$message).join(',')
+                "
               />
               <!--  -->
             </div>
@@ -65,7 +73,9 @@
               />
             </div>
             <div class="col-12 q-mt-md">
-              <label class="q-mb-sm label-input">{{ $t($L.MODEL.USER.LAST_NAME) }}</label>
+              <label class="q-mb-sm label-input">{{
+                $t($L.MODEL.USER.LAST_NAME)
+              }}</label>
               <q-input
                 outlined
                 v-model="createModel.lastName"
@@ -82,7 +92,9 @@
                 :label="$t($L.GENERAL.CHOOSE_ROLE)"
                 @blur="v$.roles.$touch"
                 :error="v$.roles.$error"
-                :error-message="v$.roles.$errors.map((x) => x.$message).join(',')"
+                :error-message="
+                  v$.roles.$errors.map((x) => x.$message).join(',')
+                "
               />
               <!--  -->
             </div>
@@ -110,7 +122,9 @@ export default defineComponent({
   },
   emits: ["update:modelValue", "onRegister", "closeFab"],
   setup(props, { emit }) {
-    const userManagerService = container.get<UserManagerService>(cid.UserManagerService);
+    const userManagerService = container.get<UserManagerService>(
+      cid.UserManagerService
+    );
     const createModel = ref(new UserCreateVm());
     const v$ = createModel.value.v$(createModel);
 

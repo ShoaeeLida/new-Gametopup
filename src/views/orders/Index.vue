@@ -3,7 +3,7 @@
     <div class="border-b border-gray-200">
       <div class="sm:flex sm:items-baseline">
         <h3 class="text-lg font-medium leading-6 text-gray-900">Orders</h3>
-        <div class="mt-4 sm:mt-0 sm:ml-10 !overflow-x-auto overflow-y-hidden">
+        <div class="mt-4 !overflow-x-auto overflow-y-hidden sm:mt-0 sm:ml-10">
           <q-tabs
             v-model="tab"
             narrow-indicator
@@ -19,7 +19,7 @@
         </div>
       </div>
     </div>
-    <div class="overflow-x-auto w-full bg-white shadow mt-5 sm:rounded-md">
+    <div class="mt-5 w-full overflow-x-auto bg-white shadow sm:rounded-md">
       <q-tab-panels v-model="tab" animated>
         <q-tab-panel name="new">
           <app-new-orders></app-new-orders>

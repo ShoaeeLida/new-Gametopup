@@ -49,7 +49,7 @@
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="currentColor"
-                class="w-6 h-6 text-gray-400"
+                class="h-6 w-6 text-gray-400"
               >
                 <path
                   stroke-linecap="round"
@@ -65,7 +65,7 @@
                   <div class="text-lg font-medium text-gray-900">
                     {{ model.totalOrders }}
                     <span
-                      class="bg-green-500 text-white text-[0.6rem] py-1 px-2 rounded-full align-middle"
+                      class="rounded-full bg-green-500 py-1 px-2 align-middle text-[0.6rem] text-white"
                       >0 New</span
                     >
                   </div>
@@ -85,7 +85,7 @@
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="currentColor"
-                class="w-6 h-6 text-gray-400"
+                class="h-6 w-6 text-gray-400"
               >
                 <path
                   stroke-linecap="round"
@@ -116,10 +116,10 @@
   </h2>
   <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
     <div class="flow-root">
-      <div class="overflow-hidden bg-white shadow mt-5 sm:rounded-md">
+      <div class="mt-5 overflow-hidden bg-white shadow sm:rounded-md">
         <div class="overflow-x-auto">
           <table
-            class="divide-y divide-gray-300 min-w-full py-2 align-middle sm:px-6 lg:px-8"
+            class="min-w-full divide-y divide-gray-300 py-2 align-middle sm:px-6 lg:px-8"
           >
             <thead>
               <tr>
@@ -150,7 +150,7 @@
                     <div class="flex items-center">
                       <div class="h-10 w-10 flex-shrink-0">
                         <span
-                          class="h-10 w-10 rounded-full bg-green-100 flex justify-center place-items-center"
+                          class="flex h-10 w-10 place-items-center justify-center rounded-full bg-green-100"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -158,7 +158,7 @@
                             viewBox="0 0 24 24"
                             stroke-width="2.5"
                             stroke="currentColor"
-                            class="w-4 h-4 stroke-green-800"
+                            class="h-4 w-4 stroke-green-800"
                           >
                             <path
                               stroke-linecap="round"
@@ -194,7 +194,7 @@
                     <div class="flex items-center">
                       <div class="h-10 w-10 flex-shrink-0">
                         <span
-                          class="h-10 w-10 rounded-full bg-red-100 flex justify-center place-items-center"
+                          class="flex h-10 w-10 place-items-center justify-center rounded-full bg-red-100"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -202,7 +202,7 @@
                             viewBox="0 0 24 24"
                             stroke-width="2.5"
                             stroke="currentColor"
-                            class="w-4 h-4 stroke-red-900"
+                            class="h-4 w-4 stroke-red-900"
                           >
                             <path
                               stroke-linecap="round"

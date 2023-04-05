@@ -7,7 +7,7 @@
           <p class="mt-1 text-sm text-gray-600">
             You can request to payout your available balance.
           </p>
-          <div class="rounded-md bg-indigo-50 p-4 border border-indigo-400 mt-5">
+          <div class="mt-5 rounded-md border border-indigo-400 bg-indigo-50 p-4">
             <div class="flex">
               <div class="flex-shrink-0">
                 <svg
@@ -45,7 +45,7 @@
 
                 <div class="mt-4 grid grid-cols-2 gap-y-6 gap-x-4">
                   <label
-                    class="relative flex cursor-pointer rounded-lg border border-indigo-500 ring-1 ring-indigo-500 bg-white p-4 shadow-sm focus:outline-none"
+                    class="relative flex cursor-pointer rounded-lg border border-indigo-500 bg-white p-4 shadow-sm ring-1 ring-indigo-500 focus:outline-none"
                   >
                     <span class="flex flex-1">
                       <span class="flex flex-col">
@@ -107,7 +107,7 @@
                     </span>
                     <!-- Not Checked: "invisible" -->
                     <svg
-                      class="h-5 w-5 text-indigo-600 invisible"
+                      class="invisible h-5 w-5 text-indigo-600"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                       aria-hidden="true"
@@ -135,15 +135,15 @@
                 </legend>
                 <div class="relative mt-3 -space-y-px rounded-md bg-white">
                   <label
-                    class="bg-indigo-50 border-indigo-200 z-10 rounded-md mb-2 relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-2 focus:outline-none"
+                    class="relative z-10 mb-2 flex cursor-pointer flex-col rounded-md border border-indigo-200 bg-indigo-50 p-4 focus:outline-none md:grid md:grid-cols-2 md:pl-4 md:pr-6"
                   >
-                    <span class="flex flex-2 items-center text-sm">
+                    <span class="flex-2 flex items-center text-sm">
                       <input
                         type="radio"
                         name="pricing-plan"
                         value="Startup"
                         checked
-                        class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500"
+                        class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
                         aria-labelledby="pricing-plans-0-label"
                         aria-describedby="pricing-plans-0-description-0 pricing-plans-0-description-1"
                       />
@@ -155,23 +155,23 @@
                     </span>
                     <span
                       id="pricing-plans-0-description-1"
-                      class="ml-6 pl-1 text-xs md:ml-0 md:pl-0 md:text-right text-indigo-700"
+                      class="ml-6 pl-1 text-xs text-indigo-700 md:ml-0 md:pl-0 md:text-right"
                       >Upto 30 TRX Fee</span
                     >
                   </label>
                   <label
-                    class="rounded-md relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-2 focus:outline-none"
+                    class="relative flex cursor-pointer flex-col rounded-md border p-4 focus:outline-none md:grid md:grid-cols-2 md:pl-4 md:pr-6"
                   >
-                    <span class="flex flex-2 items-center text-sm">
+                    <span class="flex-2 flex items-center text-sm">
                       <input
                         type="radio"
                         name="pricing-plan"
                         value="Startup"
-                        class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500"
+                        class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
                         aria-labelledby="pricing-plans-0-label"
                         aria-describedby="pricing-plans-0-description-0 pricing-plans-0-description-1"
                       />
-                      <span id="pricing-plans-0-label" class="ml-3 font-sm"
+                      <span id="pricing-plans-0-label" class="font-sm ml-3"
                         >USDT ERC20</span
                       >
                     </span>
@@ -184,7 +184,7 @@
                 </div>
               </fieldset>
               <fieldset>
-                <legend class="text-base mb-3 font-medium text-gray-900">
+                <legend class="mb-3 text-base font-medium text-gray-900">
                   Enter Wallet Address
                 </legend>
                 <div>
@@ -193,7 +193,7 @@
                       type="text"
                       name="price"
                       id="price"
-                      class="block w-full rounded-md border-gray-300 pr-14 py-4 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm sm:leading-4"
+                      class="block w-full rounded-md border-gray-300 py-4 pr-14 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm sm:leading-4"
                       placeholder="Enter the wallet address"
                       aria-describedby="price-currency"
                     />
@@ -201,7 +201,7 @@
                 </div>
               </fieldset>
               <fieldset>
-                <legend class="text-base mb-3 font-medium text-gray-900">
+                <legend class="mb-3 text-base font-medium text-gray-900">
                   Enter Amount
                 </legend>
                 <div>
@@ -210,7 +210,7 @@
                       type="text"
                       name="price"
                       id="price"
-                      class="block w-full py-4 rounded-md border-gray-300 pr-14 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      class="block w-full rounded-md border-gray-300 py-4 pr-14 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                       placeholder="0.00"
                       aria-describedby="price-currency"
                     />
@@ -225,10 +225,10 @@
                 </div>
               </fieldset>
             </div>
-            <div class="bg-indigo-50 px-4 py-6 flex sm:px-6">
-              <div class="text-xs flex-1">
+            <div class="flex bg-indigo-50 px-4 py-6 sm:px-6">
+              <div class="flex-1 text-xs">
                 You will receive
-                <span class="font-medium text-base block text-cyan-600">921.45 USDT</span>
+                <span class="block text-base font-medium text-cyan-600">921.45 USDT</span>
               </div>
               <button
                 type="submit"

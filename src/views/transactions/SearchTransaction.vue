@@ -10,7 +10,8 @@
       <q-card-section class="q-mt-lg">
         <div class="row no-wrap items-center">
           <div class="text-h6">
-            <q-icon name="search" size="md"></q-icon> {{ $t($L.GENERAL.SEARCH) }}
+            <q-icon name="search" size="md"></q-icon>
+            {{ $t($L.GENERAL.SEARCH) }}
             {{ $t($L.GENERAL.TRANSACTION) }}
           </div>
           <q-space />
@@ -26,7 +27,11 @@
             </label>
             <q-input id="from" filled v-model="from">
               <template v-slot:append>
-                <q-icon name="event" class="cursor-pointer" @click="popupStartDate?.show">
+                <q-icon
+                  name="event"
+                  class="cursor-pointer"
+                  @click="popupStartDate?.show"
+                >
                   <q-popup-proxy
                     ref="popupStartDate"
                     class="shadow"
@@ -52,7 +57,11 @@
             </label>
             <q-input id="to" filled v-model="to">
               <template v-slot:append>
-                <q-icon name="event" class="cursor-pointer" @click="popupEndDate?.show">
+                <q-icon
+                  name="event"
+                  class="cursor-pointer"
+                  @click="popupEndDate?.show"
+                >
                   <q-popup-proxy
                     ref="popupEndDate"
                     class="shadow"

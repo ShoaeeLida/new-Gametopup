@@ -37,7 +37,9 @@
               :placeholder="$t($L.MODEL.USER.PASSWORD)"
               @blur="v$.password.$touch"
               :error="v$.password.$error"
-              :error-message="v$.password.$errors.map((x) => x.$message).join(',')"
+              :error-message="
+                v$.password.$errors.map((x) => x.$message).join(',')
+              "
             />
           </div>
           <div class="col-12 q-mt-md">
@@ -48,7 +50,9 @@
               :placeholder="$t($L.GENERAL.CONFIRM_PASSWORD)"
               @blur="v$.confirmPassword.$touch"
               :error="v$.confirmPassword.$error"
-              :error-message="v$.confirmPassword.$errors.map((x) => x.$message).join(',')"
+              :error-message="
+                v$.confirmPassword.$errors.map((x) => x.$message).join(',')
+              "
             />
           </div>
 
@@ -103,7 +107,10 @@ export default defineComponent({
           msg.value = result.message;
         }
       } else {
-        Utility.showNotification(MessageTypeEnum.Danger, $t(L.MESSAGE.NO_MATCH));
+        Utility.showNotification(
+          MessageTypeEnum.Danger,
+          $t(L.MESSAGE.NO_MATCH)
+        );
       }
     }
 
