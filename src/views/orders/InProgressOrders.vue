@@ -246,7 +246,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, defineAsyncComponent } from "vue";
+import {
+  defineComponent,
+  ref,
+  onMounted,
+  defineAsyncComponent,
+  onBeforeUnmount,
+} from "vue";
 import { cid, container } from "inversify-props";
 import { OrderService } from "src/core/services";
 import { QuasarTable, RequestProp } from "src/core/viewModels/quasar";
@@ -390,7 +396,9 @@ export default defineComponent({
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       syncDataTable();
     });
-
+    onBeforeUnmount(() => {
+      stopSyncing = true;
+    });
     return {
       fillDataTable,
       txt: ref(""),

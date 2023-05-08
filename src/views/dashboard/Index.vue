@@ -244,7 +244,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from "vue";
+import { defineComponent, onBeforeUnmount, onMounted, ref } from "vue";
 import { cid, container } from "inversify-props";
 import { ReportService } from "src/core/services";
 import { DashboardVm } from "src/core/viewModels";
@@ -274,6 +274,9 @@ export default defineComponent({
       await getReport();
 
       syncDataTable();
+    });
+    onBeforeUnmount(() => {
+      stopSyncing = true;
     });
     return { model };
   },

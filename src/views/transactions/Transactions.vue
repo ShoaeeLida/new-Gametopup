@@ -1,8 +1,6 @@
 <template>
   <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-    <div
-      class="border-b border-gray-200 pb-5 sm:flex sm:items-center sm:justify-between"
-    >
+    <div class="border-b border-gray-200 pb-5 sm:flex sm:items-center sm:justify-between">
       <h3 class="text-lg font-medium leading-6 text-gray-900">Transactions</h3>
       <div class="mt-3 sm:mt-0 sm:ml-4">
         <button
@@ -86,9 +84,7 @@
                   </div>
                   <div class="text-gray-500">
                     Deposit from
-                    <span class="text-red-600">{{
-                      props.row.customerName
-                    }}</span>
+                    <span class="text-red-600">{{ props.row.customerName }}</span>
                   </div>
                 </div>
               </div>
@@ -122,7 +118,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted } from "vue";
+import { defineComponent, ref, onMounted, onBeforeUnmount } from "vue";
 import { cid, container } from "inversify-props";
 import { TransactionService } from "src/core/services";
 import { QuasarTable, RequestProp } from "src/core/viewModels/quasar";
@@ -131,9 +127,7 @@ import { FilterVm } from "src/core/viewModels/table";
 
 export default defineComponent({
   setup() {
-    const transactionService = container.get<TransactionService>(
-      cid.TransactionService
-    );
+    const transactionService = container.get<TransactionService>(cid.TransactionService);
     const quasarTable = ref(new QuasarTable());
     const fab1 = ref(false);
     const openSearchModal = ref(false);
@@ -183,11 +177,7 @@ export default defineComponent({
         }
       }
     }
-    async function doFilter(
-      customerId: string,
-      startDate: string,
-      endDate: string
-    ) {
+    async function doFilter(customerId: string, startDate: string, endDate: string) {
       if (
         (customerId == "" || customerId == null) &&
         (startDate == "" || startDate == null) &&
@@ -250,7 +240,9 @@ export default defineComponent({
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       syncDataTable();
     });
-
+    onBeforeUnmount(() => {
+      stopSyncing = true;
+    });
     return {
       fillDataTable,
       tab: ref("all"),
