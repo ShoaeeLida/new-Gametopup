@@ -53,7 +53,7 @@ const routes: RouteRecordRaw[] = [
         name: "UserManagement",
         component: () =>
           import(
-            /* webpackChunkName: "Users" */ "../views/user/Setting.vue"
+            /* webpackChunkName: "Users" */ "../views/user/Index.vue"
           ),
           meta: {
             title: $t(L.PAGES.USER),
