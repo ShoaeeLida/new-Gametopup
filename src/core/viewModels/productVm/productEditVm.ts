@@ -11,6 +11,7 @@ export class ProductEditVm  {
   price: string = "0";
   productCategoryId:string = "";
   code: string = "";
+  guestPrice : string = "0";
 
     v$(ref: Ref<ProductEditVm>) {
         const rules = {

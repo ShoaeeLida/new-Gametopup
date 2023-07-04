@@ -26,7 +26,9 @@
         <q-tab-panel name="teamMember">
           <app-team></app-team>
         </q-tab-panel>
-        <q-tab-panel name="botSetting"> </q-tab-panel>
+        <q-tab-panel name="botSetting">
+          <app-bot-setting></app-bot-setting>
+        </q-tab-panel>
       </q-tab-panels>
     </div>
   </div>
@@ -39,6 +41,7 @@ export default defineComponent({
   components: {
     AppSetting: defineAsyncComponent(() => import("./Setting.vue")),
     AppTeam: defineAsyncComponent(() => import("./TeamMember.vue")),
+    AppBotSetting: defineAsyncComponent(() => import("./BotSetting.vue")),
   },
   setup() {
     // const target = ref();

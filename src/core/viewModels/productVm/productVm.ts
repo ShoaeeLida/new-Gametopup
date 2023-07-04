@@ -6,6 +6,7 @@ export class ProductVm extends BaseVm {
   categoryName: string = "";
   code: string = "";
   productId: string = "";
+  guestPrice : string = "0";
 
   @Transform(({ value }) => {
     return parseFloat(value).toFixed(2);

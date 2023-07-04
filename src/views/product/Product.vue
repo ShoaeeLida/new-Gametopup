@@ -52,6 +52,12 @@
                               scope="col"
                               class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                             >
+                              Guest Price
+                            </th>
+                            <th
+                              scope="col"
+                              class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                            >
                               Status
                             </th>
                             <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-3">
@@ -86,6 +92,11 @@
                                   class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
                                 >
                                   {{ it.price }}
+                                </td>
+                                <td
+                                  class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
+                                >
+                                  {{ it.guestPrice }}
                                 </td>
                                 <td
                                   class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
@@ -299,6 +310,11 @@ export default defineComponent({
         name: "price",
         label: "price",
         field: "price",
+      },
+      {
+        name: "guestPrice",
+        label: "Guest Price",
+        field: "guestPrice",
       },
 
       {

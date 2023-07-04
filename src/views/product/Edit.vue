@@ -171,6 +171,20 @@
               {{ error.$message }}
             </p>
           </div>
+
+          <div class="col-12 q-mt-md">
+            <label class="q-mb-sm label-input">Guest Price</label>
+            <input
+              type="number"
+              :class="[
+                'block w-full rounded-md border-gray-300 py-4 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm sm:leading-4',
+                ,
+              ]"
+              v-model="editModel.guestPrice"
+              placeholder="Guest Price"
+            />
+          </div>
+
           <div class="row justify-right mt-7">
             <button
               @click="onReset"
@@ -248,11 +262,13 @@ export default defineComponent({
       async (newVal) => {
         if (newVal) {
           model.value = await productService.detailAsync(props.selectedId.toString());
+          console.log("1:", model.value);
           title.value = `${model.value.productTitle}`;
 
           var plainModel = instanceToPlain(model.value);
           editModel.value = plainToInstance(ProductEditVm, plainModel);
           editModel.value.productId = model.value.id;
+          console.log("2:", editModel.value);
           toggleSlideOver();
         }
       }
@@ -263,7 +279,8 @@ export default defineComponent({
       if (v$.value.$invalid) {
         return;
       }
-
+      var test = editModel.value;
+      console.log(test);
       var result = await productService.updateAsync(editModel.value);
       Utility.showNotification(result.status, result.message);
 

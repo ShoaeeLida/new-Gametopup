@@ -10,6 +10,7 @@ export class ProductCreateVm  {
   price: string = "0";
   productCategoryId:string = "";
   code: string = "";
+  guestPrice : string = "0";
 
   v$(ref: Ref<ProductCreateVm>) {
     const rules = {

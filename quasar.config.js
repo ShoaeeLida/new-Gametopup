@@ -64,10 +64,13 @@ module.exports = configure(function (ctx) {
 
       env: {
         VUE_APP_BASE_API_URL: ctx.dev
-          ? "https://api.gametopup.com"
-          : "https://api.gametopup.com"
+          // ? "https://api.gametopup.com"
+          // : "https://api.gametopup.com"
+
           // ? "https://api-stage.gametopup.com"
           // : "https://api-stage.gametopup.com"
+          ? "http://65.108.57.95/"
+          : "http://65.108.57.95/"
       },
 
       // chainWebpack (chain) {

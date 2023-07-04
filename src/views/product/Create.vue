@@ -171,6 +171,20 @@
               {{ error.$message }}
             </p>
           </div>
+
+          <div class="col-12 q-mt-md">
+            <label class="q-mb-sm label-input">Guest Price</label>
+            <input
+              type="number"
+              :class="[
+                'block w-full rounded-md border-gray-300 py-4 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm sm:leading-4',
+                ,
+              ]"
+              v-model="createModel.guestPrice"
+              placeholder="Guest Price"
+            />
+          </div>
+
           <div class="row justify-right mt-7">
             <button
               @click="onReset"
