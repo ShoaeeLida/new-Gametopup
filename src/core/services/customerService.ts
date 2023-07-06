@@ -59,4 +59,13 @@ export class CustomerService{
     return baseResponse;
   }
 
+  async notifyAllCustomer(msg: string): Promise<BaseResponse<boolean>> {
+    const url = "/notification/notifyAllCustomer";
+    const response = await axios.post<BaseResponse<boolean>>(url, {
+      message:msg
+    });
+    const baseResponse = response.data;
+    return baseResponse;
+  }
+
 }

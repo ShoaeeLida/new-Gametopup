@@ -5,17 +5,25 @@
         <div class="sm:flex-auto">
           <h1 class="text-xl font-semibold text-gray-900">Customers</h1>
           <p class="text-sm text-gray-700">
-            A list of all the customers in your panel including their name,
-            title, email and shop.
+            A list of all the customers in your panel including their name, title, email
+            and shop.
           </p>
         </div>
-        <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+        <div class="flex mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
           <button
             type="button"
             class="block rounded-md bg-indigo-600 py-1.5 px-3 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             @click="openCreate"
           >
             Add a customer
+          </button>
+
+          <button
+            type="button"
+            class="ml-2 rounded-md bg-cyan-600 py-1.5 px-3 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600"
+            @click="openNotify"
+          >
+            Notify all customer
           </button>
         </div>
       </div>
@@ -76,11 +84,7 @@
               </template>
               <template v-slot:body-cell-Operations="props">
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                  <button
-                    class="mr-2"
-                    title="Settings"
-                    @click="openEdit(props.row.id)"
-                  >
+                  <button class="mr-2" title="Settings" @click="openEdit(props.row.id)">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -151,6 +155,7 @@
     :selectedId="selectedItem"
     @onRegister="fillCustomerList"
   ></app-edit-modal>
+  <app-notify v-model="openNotifyModal"> </app-notify>
 </template>
 
 <script lang="ts">
@@ -173,6 +178,7 @@ export default defineComponent({
   components: {
     AppCreateModal: defineAsyncComponent(() => import("./Create.vue")),
     AppEditModal: defineAsyncComponent(() => import("./Edit.vue")),
+    AppNotify: defineAsyncComponent(() => import("./Notify.vue")),
   },
   setup() {
     const customerService = container.get<CustomerService>(cid.CustomerService);
@@ -183,6 +189,10 @@ export default defineComponent({
     const selectedItem = ref("");
     const openEditModal = ref(false);
     const loadEditModal = ref(false);
+
+    const openNotifyModal = ref(false);
+    const loadNotifyModal = ref(false);
+
     const fab1 = ref(false);
 
     quasarTable.value.columns = [
@@ -233,8 +243,15 @@ export default defineComponent({
         loadCreateModal.value = true;
         await Promise.delay(1000);
       }
-
       openCreateModal.value = true;
+    }
+
+    async function openNotify() {
+      if (!loadNotifyModal.value) {
+        loadNotifyModal.value = true;
+        await Promise.delay(1000);
+      }
+      openNotifyModal.value = true;
     }
 
     function closeFab() {
@@ -267,6 +284,9 @@ export default defineComponent({
       openCreateModal,
       closeFab,
       fab1,
+      openNotify,
+      openNotifyModal,
+      loadNotifyModal,
     };
   },
 });
