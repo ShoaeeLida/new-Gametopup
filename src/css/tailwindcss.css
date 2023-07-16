@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*  */
+.q-field__native,.q-field__control-container,.q-field__native:focus,.q-field__control-container:focus{
+  border:none !important;
+  background-color: transparent !important;
+  outline: none !important;
+  box-shadow: none;
+}
+
+

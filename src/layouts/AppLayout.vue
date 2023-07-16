@@ -1,6 +1,6 @@
 <template>
   <q-layout>
-    <div class="h-full bg-gray-50 overflow-x-hidden overflow-y-auto">
+    <div class="h-full overflow-y-auto overflow-x-hidden bg-gray-50">
       <div class="min-h-full">
         <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
         <div :class="['relative z-40 ', displayMenu]" role="dialog" aria-modal="true">
@@ -15,7 +15,7 @@
         -->
           <div
             :class="[
-              'fixed inset-0 bg-gray-600 duration-300 ease-out transition-all',
+              'fixed inset-0 bg-gray-600 transition-all duration-300 ease-out',
               bgOpacity,
             ]"
           ></div>
@@ -33,7 +33,7 @@
           -->
             <div
               :class="[
-                'relative w-full max-w-xs bg-gray-700 pt-5 pb-4 duration-300 ease-out transition-all',
+                'relative w-full max-w-xs bg-gray-700 pt-5 pb-4 transition-all duration-300 ease-out',
                 translateX,
               ]"
             >
@@ -78,14 +78,14 @@
               </div>
 
               <div
-                class="divide-y divide-gray-800 overflow-y-auto h-[85vh]"
+                class="h-[85vh] divide-y divide-gray-800 overflow-y-auto"
                 aria-label="Sidebar"
               >
                 <div class="mt-5 space-y-1 px-2">
                   <!-- Current: "bg-gray-800 text-white", Default: "text-gray-100 hover:text-white hover:bg-gray-600" -->
                   <router-link
                     to="dashboard"
-                    class="bg-gray-800 text-white group flex items-center px-2 py-2 text-base font-medium rounded-md"
+                    class="group flex items-center rounded-md bg-gray-800 px-2 py-2 text-base font-medium text-white"
                     aria-current="page"
                   >
                     <!-- Heroicon name: outline/home -->
@@ -108,7 +108,7 @@
                   </router-link>
                   <router-link
                     to="order"
-                    class="text-gray-100 hover:text-white hover:bg-gray-600 group flex items-center px-2 py-2 text-base font-medium rounded-md"
+                    class="group flex items-center rounded-md px-2 py-2 text-base font-medium text-gray-100 hover:bg-gray-600 hover:text-white"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -128,7 +128,7 @@
                   </router-link>
                   <router-link
                     to="Transaction"
-                    class="text-gray-100 hover:text-white hover:bg-gray-600 group flex items-center px-2 py-2 text-base font-medium rounded-md"
+                    class="group flex items-center rounded-md px-2 py-2 text-base font-medium text-gray-100 hover:bg-gray-600 hover:text-white"
                   >
                     <!-- Heroicon name: outline/clock -->
                     <svg
@@ -150,7 +150,7 @@
                   </router-link>
                   <router-link
                     to="Withdraw"
-                    class="text-gray-100 hover:text-white hover:bg-gray-600 group flex items-center px-2 py-2 text-base font-medium rounded-md"
+                    class="group flex items-center rounded-md px-2 py-2 text-base font-medium text-gray-100 hover:bg-gray-600 hover:text-white"
                   >
                     <!-- Heroicon name: outline/credit-card -->
                     <svg
@@ -173,7 +173,7 @@
 
                   <router-link
                     to="Customer"
-                    class="text-gray-100 hover:text-white hover:bg-gray-600 group flex items-center px-2 py-2 text-base font-medium rounded-md"
+                    class="group flex items-center rounded-md px-2 py-2 text-base font-medium text-gray-100 hover:bg-gray-600 hover:text-white"
                   >
                     <!-- Heroicon name: outline/user-group -->
                     <svg
@@ -195,7 +195,7 @@
                   </router-link>
                   <router-link
                     to="Category"
-                    class="text-gray-100 hover:text-white hover:bg-gray-600 group flex items-center px-2 py-2 text-base font-medium rounded-md"
+                    class="group flex items-center rounded-md px-2 py-2 text-base font-medium text-gray-100 hover:bg-gray-600 hover:text-white"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -216,7 +216,7 @@
                   </router-link>
                   <router-link
                     to="Product"
-                    class="text-gray-100 hover:text-white hover:bg-gray-600 group flex items-center px-2 py-2 text-base font-medium rounded-md"
+                    class="group flex items-center rounded-md px-2 py-2 text-base font-medium text-gray-100 hover:bg-gray-600 hover:text-white"
                   >
                     <!-- Heroicon name: outline/document-chart-bar -->
                     <svg
@@ -294,10 +294,10 @@
           </div>
         </div>
         <!-- Static sidebar for desktop -->
-        <div class="hidden lg:!block lg:fixed lg:inset-y-0 lg:w-64">
+        <div class="hidden lg:fixed lg:inset-y-0 lg:!block lg:w-64">
           <!-- Sidebar component, swap this element with another sidebar if you like -->
           <div
-            class="flex flex-grow flex-col overflow-y-auto bg-gray-900 pt-5 pb-4 h-full"
+            class="flex h-full flex-grow flex-col overflow-y-auto bg-gray-900 pt-5 pb-4"
           >
             <div class="fixed items-center px-4 pb-4">
               <img
@@ -315,7 +315,7 @@
 
                 <router-link
                   to="dashboard"
-                  class="bg-gray-800 text-white group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md"
+                  class="group flex items-center rounded-md bg-gray-800 px-2 py-2 text-sm font-medium leading-6 text-white"
                   :key="forceReload"
                 >
                   <svg
@@ -339,7 +339,7 @@
 
                 <router-link
                   to="order"
-                  class="text-gray-100 hover:text-white hover:bg-gray-600 group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md"
+                  class="group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 text-gray-100 hover:bg-gray-600 hover:text-white"
                 >
                   <!-- :key="$route.fullPath" -->
                   <svg
@@ -362,7 +362,7 @@
 
                 <router-link
                   to="/Transaction"
-                  class="text-gray-100 hover:text-white hover:bg-gray-600 group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md"
+                  class="group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 text-gray-100 hover:bg-gray-600 hover:text-white"
                 >
                   <svg
                     class="mr-4 h-6 w-6 flex-shrink-0 text-gray-200"
@@ -383,7 +383,7 @@
                 </router-link>
                 <router-link
                   to="/Withdraw"
-                  class="text-gray-100 hover:text-white hover:bg-gray-600 group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md"
+                  class="group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 text-gray-100 hover:bg-gray-600 hover:text-white"
                 >
                   <svg
                     class="mr-4 h-6 w-6 flex-shrink-0 text-gray-200"
@@ -405,7 +405,7 @@
 
                 <router-link
                   to="/Customer"
-                  class="text-gray-100 hover:text-white hover:bg-gray-600 group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md"
+                  class="group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 text-gray-100 hover:bg-gray-600 hover:text-white"
                 >
                   <!-- Heroicon name: outline/user-group -->
                   <svg
@@ -427,7 +427,7 @@
                 </router-link>
                 <router-link
                   to="/Category"
-                  class="text-gray-100 hover:text-white hover:bg-gray-600 group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md"
+                  class="group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 text-gray-100 hover:bg-gray-600 hover:text-white"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -448,7 +448,7 @@
                 </router-link>
                 <router-link
                   to="/Product"
-                  class="text-gray-100 hover:text-white hover:bg-gray-600 group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md"
+                  class="group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 text-gray-100 hover:bg-gray-600 hover:text-white"
                 >
                   <!-- Heroicon name: outline/document-chart-bar -->
                   <svg
@@ -467,6 +467,42 @@
                   </svg>
                   Products
                 </router-link>
+                <ul
+                  class="flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 text-gray-100"
+                >
+                  <li class="w-full">
+                    <span class="flex items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        enable-background="new 0 0 24 24"
+                        height="24px"
+                        viewBox="0 0 24 24"
+                        width="24px"
+                        class="mr-4 h-6 w-6 flex-shrink-0 fill-gray-200"
+                      >
+                        <g><path d="M0,0h24v24H0V0z" fill="none" /></g>
+                        <g>
+                          <g>
+                            <path
+                              d="M15,3H5C3.9,3,3.01,3.9,3.01,5L3,19c0,1.1,0.89,2,1.99,2H19c1.1,0,2-0.9,2-2V9L15,3z M8,17c-0.55,0-1-0.45-1-1s0.45-1,1-1 s1,0.45,1,1S8.55,17,8,17z M8,13c-0.55,0-1-0.45-1-1s0.45-1,1-1s1,0.45,1,1S8.55,13,8,13z M8,9C7.45,9,7,8.55,7,8s0.45-1,1-1 s1,0.45,1,1S8.55,9,8,9z M14,10V4.5l5.5,5.5H14z"
+                            />
+                          </g>
+                        </g>
+                      </svg>
+                      Report
+                    </span>
+                    <ul class="pl-8">
+                      <li>
+                        <router-link
+                          to="/Report"
+                          class="group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 text-gray-100 hover:bg-gray-600 hover:text-white"
+                        >
+                          Order summarize
+                        </router-link>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
               </div>
               <div class="mt-6 pt-6">
                 <div class="space-y-1 px-2">
@@ -542,7 +578,7 @@
           </div>
         </div>
         <!-- Content Area-->
-        <div class="w-full lg:pl-64 min-h-screen">
+        <div class="min-h-screen w-full lg:pl-64">
           <div
             class="flex h-16 flex-shrink-0 border-b border-gray-200 bg-white lg:border-none"
           >
@@ -727,7 +763,7 @@
                     <!-- Profile -->
                     <div class="flex items-center">
                       <span
-                        class="h-16 w-16 overflow-hidden rounded-full bg-gray-100 block"
+                        class="block h-16 w-16 overflow-hidden rounded-full bg-gray-100"
                       >
                         <svg
                           class="h-full w-full text-gray-300"
@@ -742,14 +778,14 @@
                       <div>
                         <div class="flex items-center">
                           <h1
-                            class="ml-3 text-2xl font-bold text-gray-900 truncate leading-9"
+                            class="ml-3 truncate text-2xl font-bold leading-9 text-gray-900"
                           >
                             Welcome back
                           </h1>
                         </div>
-                        <dl class="flex flex-row ml-3 mt-1">
+                        <dl class="ml-3 mt-1 flex flex-row">
                           <dd
-                            class="flex items-center text-sm font-medium text-gray-500 mr-6"
+                            class="mr-6 flex items-center text-sm font-medium text-gray-500"
                           >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -768,7 +804,7 @@
                             iGame Shop
                           </dd>
                           <dd
-                            class="flex items-center text-sm font-medium capitalize text-gray-500 mr-6"
+                            class="mr-6 flex items-center text-sm font-medium capitalize text-gray-500"
                           >
                             <!-- Heroicon name: mini/check-circle -->
                             <svg
@@ -790,7 +826,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="mt-6 flex space-x-3 md:mt-0 md:ml-4 !flex-nowrap">
+                  <div class="mt-6 flex !flex-nowrap space-x-3 md:mt-0 md:ml-4">
                     <button
                       type="button"
                       class="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"

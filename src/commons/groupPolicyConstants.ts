@@ -46,4 +46,7 @@ export const GROUP_POLICY = {
   CATEGORY: {
     NAME: "Category",
   },
+  REPORT:{
+    NAME: "Report",
+  }
 };

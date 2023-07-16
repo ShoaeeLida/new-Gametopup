@@ -73,7 +73,7 @@ export class ProductService {
   }
 
   async updateAsync(model: ProductEditVm): Promise<BaseResponse<ProductVm>> {
-    debugger;
+
     const url = `${baseEndpoint}/${model.productId}`;
     const response = await axios.put<BaseResponse<ProductVm>>(url, model);
     const baseResponse = response.data;

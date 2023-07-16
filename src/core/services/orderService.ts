@@ -1,7 +1,13 @@
-
+import { ReportByUserParameterVm } from "./../viewModels/reportVm/reportByUserParameterVm";
 import { instanceToPlain, plainToInstance } from "class-transformer";
 import { BaseResponse } from "../viewModels/common/baseResponseVm";
-import { OrderVm,OrderConfirmationVm, DdlVm, DropDownVm } from "../viewModels";
+import {
+  OrderVm,
+  OrderConfirmationVm,
+  DdlVm,
+  DropDownVm,
+  ReportOrderByUserVm,
+} from "../viewModels";
 import axios from "src/plugins/axios";
 import { MessageTypeEnum } from "src/commons";
 import { RequestProp } from "../viewModels/quasar";
@@ -18,8 +24,11 @@ export class OrderService {
   currentDoneRequestProp: RequestProp = new RequestProp();
 
   ddlCustomer: Array<DropDownVm> = [];
+  ddlStatus: Array<DropDownVm> = [];
 
-  async tableNewAsync(requestProp: RequestProp): Promise<BaseResponse<Array<OrderVm>>> {
+  async tableNewAsync(
+    requestProp: RequestProp
+  ): Promise<BaseResponse<Array<OrderVm>>> {
     const url = `${baseEndpoint}/New`;
     this.currentNewOrderRequestProp.setData(requestProp);
     const table = TableVm.toTable(this.currentNewOrderRequestProp);
@@ -53,7 +62,9 @@ export class OrderService {
     }
     return baseResponse;
   }
-  async tableRefundAsync(requestProp: RequestProp): Promise<BaseResponse<Array<OrderVm>>> {
+  async tableRefundAsync(
+    requestProp: RequestProp
+  ): Promise<BaseResponse<Array<OrderVm>>> {
     const url = `${baseEndpoint}/Refund`;
     this.currentRefundRequestProp.setData(requestProp);
     const table = TableVm.toTable(this.currentRefundRequestProp);
@@ -69,7 +80,9 @@ export class OrderService {
     }
     return baseResponse;
   }
-  async tableDoneAsync(requestProp: RequestProp): Promise<BaseResponse<Array<OrderVm>>> {
+  async tableDoneAsync(
+    requestProp: RequestProp
+  ): Promise<BaseResponse<Array<OrderVm>>> {
     const url = `${baseEndpoint}/Done`;
     this.currentDoneRequestProp.setData(requestProp);
     const table = TableVm.toTable(this.currentDoneRequestProp);
@@ -112,7 +125,7 @@ export class OrderService {
     return response.data;
   }
 
-  async customerList() :Promise<Array<DdlVm>>{
+  async customerList(): Promise<Array<DdlVm>> {
     const url = `${actionEndpoint}/search/customers`;
     const response = await axios.get<BaseResponse<Array<DdlVm>>>(url);
 
@@ -137,4 +150,31 @@ export class OrderService {
     }
   }
 
+  async ddlStatusAsync(): Promise<Array<DropDownVm>> {
+    if (this.ddlStatus.length > 0) {
+      return this.ddlStatus;
+    } else {
+      const list = ["Created", "in Progress", "Canceled", "Done"];
+      for (let i = 0; i < list.length; i++) {
+        this.ddlStatus.push({ label: list[i], value: i + 1 });
+      }
+      return this.ddlStatus;
+    }
+  }
+
+  async getReportByUser(
+    model: ReportByUserParameterVm
+  ): Promise<BaseResponse<Array<ReportOrderByUserVm>>> {
+    const url = "orderList/getOrderSummarize";
+    const response = await axios.post<BaseResponse<Array<ReportOrderByUserVm>>>(url, model);
+
+    const baseResponse = response.data;
+    //let result: Array<ReportOrderByUserVm> = [];
+//debugger
+    // if (baseResponse.status == MessageTypeEnum.Success) {
+   // result = plainToInstance(ReportOrderByUserVm, baseResponse);
+    console.log(baseResponse);
+    // }
+    return baseResponse;
+  }
 }

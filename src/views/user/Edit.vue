@@ -171,6 +171,7 @@ export default defineComponent({
           title.value = `${model.value.firstName} ${model.value.lastName}`;
           var plainModel = instanceToPlain(model.value);
           editModel.value = plainToInstance(UserEditVm, plainModel);
+
           toggleSlideOver();
         }
       }

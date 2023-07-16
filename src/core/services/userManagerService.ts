@@ -1,15 +1,24 @@
 import { instanceToPlain, plainToInstance } from "class-transformer";
 import { BaseResponse } from "../viewModels/common/baseResponseVm";
-import { UserVm,UserCreateVm,UserEditVm } from "../viewModels";
+import {
+  UserVm,
+  UserCreateVm,
+  UserEditVm,
+  DropDownVm,
+  UserTenantVm,
+} from "../viewModels";
 import axios from "src/plugins/axios";
 import { MessageTypeEnum } from "src/commons";
 import { RequestProp } from "../viewModels/quasar";
 import { TableVm } from "../viewModels/table";
 
-const baseEndpoint="/UserManager";
+const baseEndpoint = "/UserManager";
 
-export class UserManagerService{
+
+export class UserManagerService {
   currentRequestProp: RequestProp = new RequestProp();
+  //ddlUserTenant: Array<DropDownVm> = [];
+
   async detailAsync(id: string): Promise<UserVm> {
     const url = `${baseEndpoint}/${id}`;
     const response = await axios.get<BaseResponse<UserVm>>(url);
@@ -23,16 +32,20 @@ export class UserManagerService{
     return detail;
   }
 
-  async tableAsync( requestProp: RequestProp): Promise<BaseResponse<Array<UserVm>>> {
+  async tableAsync(
+    requestProp: RequestProp
+  ): Promise<BaseResponse<Array<UserVm>>> {
     const url = `${baseEndpoint}/List`;
     this.currentRequestProp.setData(requestProp);
     const table = TableVm.toTable(this.currentRequestProp);
     const jsonData = instanceToPlain(table);
 
-    const response = await axios.post<BaseResponse<Array<UserVm>>>( url,
-      jsonData);
+    const response = await axios.post<BaseResponse<Array<UserVm>>>(
+      url,
+      jsonData
+    );
     const baseResponse = response.data;
-   // let result: Array<UserVm> = [];
+    // let result: Array<UserVm> = [];
     if (baseResponse.status == MessageTypeEnum.Success) {
       baseResponse.data = plainToInstance(UserVm, baseResponse.data);
     }
@@ -58,5 +71,33 @@ export class UserManagerService{
     }
     return baseResponse;
   }
+
+  async getUserTenant(): Promise<Array<DropDownVm>> {
+    const url = "account/getTenantUsers";
+    const response = await axios.get<BaseResponse<Array<UserTenantVm>>>(url);
+    const baseResponse = response.data;
+    let result: Array<UserTenantVm> = [];
+    if (baseResponse.status == MessageTypeEnum.Success) {
+      result = plainToInstance(UserTenantVm, baseResponse.data);
+    }
+    const ddlUserTenant: Array<DropDownVm> = []
+    for (const item of result) {
+      ddlUserTenant.push({ label: `${item.fullName} `, value: item.id });
+    }
+    return ddlUserTenant;
+  }
+
+  // async ddlUserTenantAsync(): Promise<Array<DropDownVm>> {
+  //   if (this.ddlUserTenant.length > 0) {
+  //     return this.ddlUserTenant;
+  //   } else {
+  //     const list = await this.getUserTenant();
+  //     for (const item of list) {
+  //       this.ddlUserTenant.push({ label: `${item.fullName} `, value: item.id });
+  //     }
+
+  //     return this.ddlUserTenant;
+  //   }
+  // }
 
 }

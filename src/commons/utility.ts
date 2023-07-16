@@ -30,7 +30,8 @@ export class Utility {
       groupPolicyName == GROUP_POLICY.CHANGE_PASSWORD.NAME ||
       groupPolicyName == GROUP_POLICY.FORGET_PASSWORD.NAME ||
       groupPolicyName == GROUP_POLICY.WITHDRAW.NAME ||
-      groupPolicyName == GROUP_POLICY.CATEGORY.NAME
+      groupPolicyName == GROUP_POLICY.CATEGORY.NAME ||
+      groupPolicyName == GROUP_POLICY.REPORT.NAME
     ) {
       return true;
     }
@@ -38,7 +39,6 @@ export class Utility {
     if (groupPolicyList == null) {
       return false;
     }
-
 
     if (
       groupPolicyName == GROUP_POLICY.RESET_PASSWORD.NAME ||
