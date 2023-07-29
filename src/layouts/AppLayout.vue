@@ -33,7 +33,7 @@
           -->
             <div
               :class="[
-                'relative w-full max-w-xs bg-gray-700 pt-5 pb-4 transition-all duration-300 ease-out',
+                'relative w-full max-w-xs bg-gray-700 pb-4 pt-5 transition-all duration-300 ease-out',
                 translateX,
               ]"
             >
@@ -47,7 +47,7 @@
                 From: "opacity-100"
                 To: "opacity-0"
             -->
-              <div class="absolute top-0 right-0 -mr-12 pt-2">
+              <div class="absolute right-0 top-0 -mr-12 pt-2">
                 <button
                   type="button"
                   class="ml-1 flex h-10 w-10 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
@@ -297,7 +297,7 @@
         <div class="hidden lg:fixed lg:inset-y-0 lg:!block lg:w-64">
           <!-- Sidebar component, swap this element with another sidebar if you like -->
           <div
-            class="flex h-full flex-grow flex-col overflow-y-auto bg-gray-900 pt-5 pb-4"
+            class="flex h-full flex-grow flex-col overflow-y-auto bg-gray-900 pb-4 pt-5"
           >
             <div class="fixed items-center px-4 pb-4">
               <img
@@ -470,7 +470,7 @@
                 <ul
                   class="flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 text-gray-100"
                 >
-                  <li class="w-full">
+                  <li class="w-full cursor-pointer">
                     <span class="flex items-center">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -491,7 +491,7 @@
                       </svg>
                       Report
                     </span>
-                    <ul class="pl-8">
+                    <ul class="pl-4">
                       <li>
                         <router-link
                           to="/Report"
@@ -826,7 +826,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="mt-6 flex !flex-nowrap space-x-3 md:mt-0 md:ml-4">
+                  <div class="mt-6 flex !flex-nowrap space-x-3 md:ml-4 md:mt-0">
                     <button
                       type="button"
                       class="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
@@ -863,6 +863,7 @@ import { useRouter } from "vue-router";
 export default defineComponent({
   name: "MainLayout",
   components: {},
+
   setup() {
     const $q = useQuasar();
     const userName = LocalStorage.getItem(LOCAL_STORAGE.FULL_NAME);
@@ -902,6 +903,7 @@ export default defineComponent({
       displayMenu,
       translateX,
       toggleMobileMenu,
+      visible: ref(false),
     };
   },
 });

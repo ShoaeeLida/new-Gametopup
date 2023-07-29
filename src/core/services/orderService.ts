@@ -24,7 +24,7 @@ export class OrderService {
   currentDoneRequestProp: RequestProp = new RequestProp();
 
   ddlCustomer: Array<DropDownVm> = [];
-  ddlStatus: Array<DropDownVm> = [];
+  //ddlStatus: Array<DropDownVm> = [];
 
   async tableNewAsync(
     requestProp: RequestProp
@@ -151,15 +151,17 @@ export class OrderService {
   }
 
   async ddlStatusAsync(): Promise<Array<DropDownVm>> {
-    if (this.ddlStatus.length > 0) {
-      return this.ddlStatus;
-    } else {
+    // if (this.ddlStatus.length > 0) {
+    //   return this.ddlStatus;
+    // } else {
+     const ddlStatus: Array<DropDownVm> = [];
       const list = ["Created", "in Progress", "Canceled", "Done"];
       for (let i = 0; i < list.length; i++) {
-        this.ddlStatus.push({ label: list[i], value: i + 1 });
+        ddlStatus.push({ label: list[i], value: (i + 1).toString() });
       }
-      return this.ddlStatus;
-    }
+      return ddlStatus;
+     // return this.ddlStatus;
+
   }
 
   async getReportByUser(
