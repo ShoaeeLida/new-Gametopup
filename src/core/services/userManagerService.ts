@@ -6,6 +6,7 @@ import {
   UserEditVm,
   DropDownVm,
   UserTenantVm,
+  CustomerDdlVm
 } from "../viewModels";
 import axios from "src/plugins/axios";
 import { MessageTypeEnum } from "src/commons";
@@ -86,18 +87,21 @@ export class UserManagerService {
     }
     return ddlUserTenant;
   }
+//
 
-  // async ddlUserTenantAsync(): Promise<Array<DropDownVm>> {
-  //   if (this.ddlUserTenant.length > 0) {
-  //     return this.ddlUserTenant;
-  //   } else {
-  //     const list = await this.getUserTenant();
-  //     for (const item of list) {
-  //       this.ddlUserTenant.push({ label: `${item.fullName} `, value: item.id });
-  //     }
-
-  //     return this.ddlUserTenant;
-  //   }
-  // }
+async getCustomer(): Promise<Array<DropDownVm>> {
+  const url = "order/search/customers";
+  const response = await axios.get<BaseResponse<Array<CustomerDdlVm>>>(url);
+  const baseResponse = response.data;
+  let result: Array<CustomerDdlVm> = [];
+  if (baseResponse.status == MessageTypeEnum.Success) {
+    result = plainToInstance(CustomerDdlVm, baseResponse.data);
+  }
+  const customerList: Array<DropDownVm> = []
+  for (const item of result) {
+    customerList.push({ label: `${item.value} `, value: item.key });
+  }
+  return customerList;
+}
 
 }

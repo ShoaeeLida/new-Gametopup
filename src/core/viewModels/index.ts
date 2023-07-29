@@ -50,6 +50,7 @@ export * from "./withdrawal/payoutVm";
 export * from "./reportVm/reportOrderByUserVm";
 export * from "./reportVm/reportByUserParameterVm";
 export * from "./userVm/userTenantVm";
+export * from "./customerVm/customerDdlVm";
 
 
 
